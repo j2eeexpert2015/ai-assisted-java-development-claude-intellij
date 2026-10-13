@@ -1,0 +1,1 @@
+# ai-assisted-java-development-claude-intellij
