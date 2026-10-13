@@ -8,7 +8,7 @@ Find the lesson you're following below. Each lesson page contains commands and p
 
 | Lesson | Resources |
 | --- | --- |
-| Claude Code Installation, Fundamentals & IntelliJ IDEA Integration | [Setup, commands, and Calculator prompts](lessons/claude-code-installation-intellij-idea/README.md) |
+| Claude Code with IntelliJ IDEA: Setup & Your First Java Project | [Setup, commands, and Calculator prompts](lessons/claude-code-installation-intellij-idea/README.md) |
 
 ## How to use these resources
 

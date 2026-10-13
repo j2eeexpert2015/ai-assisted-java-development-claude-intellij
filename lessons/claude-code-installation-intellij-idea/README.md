@@ -1,4 +1,4 @@
-# Claude Code Installation, Fundamentals & IntelliJ IDEA Integration
+# Claude Code with IntelliJ IDEA: Setup & Your First Java Project
 
 This page contains the **commands and prompts used in the lesson**, in demonstration order. It is intended for viewers to copy and follow—not as a narration script.
 
