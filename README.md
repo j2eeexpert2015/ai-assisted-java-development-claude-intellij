@@ -4,4 +4,4 @@ Companion resources for practical lessons on **Claude Code, IntelliJ IDEA, Java,
 
 ## Lessons
 
-- **[Claude Code with IntelliJ IDEA: Setup & Your First Java Project](lessons/claude-code-installation-intellij-idea/README.md)** — Installation commands, configuration steps, and copy-ready prompts for the Java Calculator demonstration.
+- **[Claude Code with IntelliJ IDEA: Setup & Your First Java Project](lessons/claude-code-intellij-java-getting-started/README.md)** — Installation commands, configuration steps, and copy-ready prompts for the Java Calculator demonstration.
