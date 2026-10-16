@@ -3,7 +3,6 @@
 Follow along with the Java Maven Calculator demonstration. The prompts below follow the recording order so you can jump to each task and copy its instructions into Claude Code.
 
 ## Contents
-
 - [Useful Resources](#useful-resources)
   - [Claude Code Overview](#claude-code-overview)
   - [Plans and Pricing](#plans-and-pricing)
@@ -17,9 +16,8 @@ Follow along with the Java Maven Calculator demonstration. The prompts below fol
   - [Add Multiplication and Compile](#add-multiplication-and-compile)
   - [Review Selected Method — Selection Context](#review-selected-method--selection-context)
   - [Plan Subtraction and JUnit Tests](#plan-subtraction-and-junit-tests)
-  - [Refine the Plan (Optional)](#refine-the-plan-optional)
+  - [Refine the Plan](#refine-the-plan)
   - [Add Division and Run Tests](#add-division-and-run-tests)
-  - [Review Division Tests (Optional)](#review-division-tests-optional)
   - [Inspect IntelliJ Diagnostics](#inspect-intellij-diagnostics)
 
 ## Useful Resources
@@ -72,159 +70,97 @@ Open a new PowerShell window after updating `Path`. See [Claude Code Installatio
 
 ## Java Development Prompts
 
-The prompts follow the order of the lesson. This lesson demonstrates **IDE Diff Viewing, Selection Context, and Diagnostic Sharing**. Use optional prompts only if a result requires refinement; review proposed changes and command permissions before approval.
+These prompts match the latest recording script, in demonstration order. The three IntelliJ integration features are **IDE Diff Viewing**, **Selection Context**, and **Diagnostic Sharing**. Review Claude’s changes and requested permissions before accepting them.
 
 ### Inspect the Maven Project
 
-Identify the Java version in Maven and the active JDK, without changing project files.
+Inspect the Maven project configuration and active JDK. No files should be changed.
 
 ```text
-Inspect this Maven project.
-
-Which Java version is it configured to compile with?
-Where is that version configured?
-
-Also determine which JDK is installed and active.
-
-Do not modify any files.
+Inspect this Maven project: identify the configured
+Java version, where it's set, and the installed and
+active JDK. Do not modify files.
 ```
 
 ### Create the Calculator Class
 
-Use Manual mode and review the proposed new Java file in IntelliJ's Diff Viewer.
+Use Manual mode and review the new Java file in IntelliJ’s Diff Viewer.
 
 ```text
-Create a Calculator class in the
-com.example.calculator package.
-
-Add a public int add(int a, int b)
-method that returns the sum.
+Create Calculator in package com.example.calculator
+with public int add(int a, int b) that returns the sum.
 ```
 
 ### Add Multiplication and Compile
 
-Use Accept Edits for a small, predictable change, and inspect the Maven compilation output.
+Use Accept Edits and inspect the compilation results.
 
 ```text
-Add a public int multiply(int a, int b)
-method to the existing Calculator class.
-
-The method should return the product
-of the arguments.
-
-Then compile the project using `mvn compile`.
+Add public int multiply(int a, int b) to Calculator
+that returns the product. Run `mvn compile`.
 ```
 
 ### Review Selected Method — Selection Context
 
-**Before submitting:** Select the entire `multiply()` method in the IntelliJ editor. Claude Code picks up the selected lines automatically. Do not add an explicit `@` file reference for this exercise.
+Select the `multiply()` method in IntelliJ before submitting. Claude receives the selection context automatically.
 
 ```text
-Review the method selected in IntelliJ.
-
-Are there any important edge cases
-or limitations?
-
-Do not modify the code.
+Review the selected IntelliJ method for important
+edge cases or limitations. Do not modify code.
 ```
 
 ### Plan Subtraction and JUnit Tests
 
-Use Plan mode to review the multi-file implementation approach and keep the tests focused.
+Use Plan mode. Review the proposed implementation before approving any changes.
 
 ```text
-Add subtraction to our Calculator and set up
-JUnit Jupiter tests for addition, multiplication,
-and subtraction.
+Plan adding subtraction and JUnit Jupiter tests for
+addition, multiplication, and subtraction.
 
-Keep the tests focused and easy to understand.
-Cover normal behavior, negative values, and
-zero where relevant.
-
-Avoid redundant test cases and unnecessary
-testing infrastructure.
-
-First, inspect the project and propose a plan.
-Do not implement anything yet.
+Cover normal values, negatives, and zero where relevant.
+Avoid redundant tests and unnecessary setup.
+Inspect the project and propose a plan only; don't implement.
 ```
 
-### Refine the Plan (Optional)
+### Refine the Plan
 
-**Use when the proposed plan includes work outside the requirement**, such as changes to existing methods, special overflow handling, or overflow-specific tests. In the plan approval menu, choose **Tell Claude what to change**, enter this feedback, and review the updated plan before approving implementation.
+When the proposed plan goes beyond the requested scope, choose **Tell Claude what to change**, submit this feedback, and review the revised plan before approval.
 
 ```text
-Refine the plan with these requirements:
+Revise the plan: keep all existing methods unchanged.
+Add subtraction and focused JUnit Jupiter tests for
+all Calculator methods, including subtraction.
 
-1. Keep all existing methods unchanged.
+Cover normal values, negatives, and zero where relevant.
+Exclude overflow handling, overflow tests/checks,
+and unrelated changes. Include only necessary Maven
+test configuration.
 
-2. Add a subtraction method and create focused
-JUnit Jupiter tests for all Calculator methods,
-including the new subtraction method.
-
-3. Cover normal values, negative values, and
-zero where relevant. Avoid unnecessary overflow
-handling, overflow-specific tests, and optional
-overflow checks.
-
-4. Include only the Maven testing configuration
-needed to run the tests.
-
-Keep the solution simple and avoid unrelated
-changes.
-
-Update the plan only. Do not implement anything yet.
+Update the plan only; do not implement.
 ```
 
 ### Add Division and Run Tests
 
-Use Auto mode on a bounded task, then review the implementation, tests, Maven output, and changed files. File boundaries specified in a prompt are instructions, not enforced permission restrictions.
+Use Auto mode. Review the method, tests, and Maven output afterward.
 
 ```text
-Add a public int divide(int a, int b)
-method to the existing Calculator class.
+Add a divide(int a, int b) method to Calculator
+using Java integer division.
 
-Use standard Java integer division.
+Add focused JUnit tests for division,
+including division by zero.
 
-Add focused JUnit Jupiter tests that verify:
-- 7 / 2 returns 3
-- Division by zero throws ArithmeticException
-- Division with a negative number
-
-Keep the tests concise. Avoid redundant
-boundary tests and unrelated refactoring.
-
-Run all Maven tests using `mvn test`.
-
-Only modify Calculator.java and
-CalculatorTest.java. Do not modify pom.xml
-or add new dependencies.
-```
-
-### Review Division Tests (Optional)
-
-Use only if the first division implementation or its tests are incomplete.
-
-```text
-Review divide(int a, int b) and its tests.
-
-Ensure tests verify that 7 / 2 returns 3
-and division by zero throws
-ArithmeticException.
-
-Keep the implementation simple.
-Rerun the tests using `mvn test`.
+Run mvn test. Only modify Calculator.java
+and CalculatorTest.java.
 ```
 
 ### Inspect IntelliJ Diagnostics
 
-**Before submitting:** Temporarily insert `missingMethod();` **inside** the `add()` method in `Calculator.java` and allow IntelliJ to report the error. Use Manual mode for this read-only diagnostic exercise.
+Temporarily add `missingMethod();` **in the class body**, after `divide()` and before the class’s final `}`. Open IntelliJ’s **Problems** tool window and inspect the errors before asking Claude to retrieve them. Use Manual mode.
 
 ```text
-Check IntelliJ IDEA's inspection diagnostics
-for Calculator.java.
-
-Explain any errors or warnings you find.
-Do not modify the code.
+Retrieve IntelliJ's diagnostics for Calculator.java
+and explain any errors or warnings. Do not edit files.
 ```
 
-Check that Claude actually retrieves IntelliJ diagnostic information rather than only reading the source file. After the demonstration, remove the temporary invalid statement.
+After Claude replies, press **Ctrl+O** to inspect the tool activity. Verify an **`ide - getDiagnostics (MCP)`** call and compare its messages with IntelliJ’s **Problems** window. Remove `missingMethod();` when finished.
