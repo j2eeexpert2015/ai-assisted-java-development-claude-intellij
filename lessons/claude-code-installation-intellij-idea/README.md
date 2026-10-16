@@ -4,46 +4,45 @@ Follow along with the Java Maven Calculator demonstration. The prompts below fol
 
 ## Contents
 
-- [Useful resources](#useful-resources)
-  - [Claude Code overview](#claude-code-overview)
-  - [Plans and pricing](#plans-and-pricing)
-  - [Claude Code installation](#claude-code-installation)
-  - [Windows installation troubleshooting](#windows-installation-troubleshooting)
+- [Useful Resources](#useful-resources)
+  - [Claude Code Overview](#claude-code-overview)
+  - [Plans and Pricing](#plans-and-pricing)
+  - [Claude Code Installation](#claude-code-installation)
+  - [Windows Installation Troubleshooting](#windows-installation-troubleshooting)
   - [Claude Code with IntelliJ IDEA](#claude-code-with-intellij-idea)
-- [Windows PowerShell installation](#windows-powershell-installation)
-- [Java development prompts](#java-development-prompts)
+- [Windows PowerShell Installation](#windows-powershell-installation)
+- [Java Development Prompts](#java-development-prompts)
   - [Inspect the Maven Project](#inspect-the-maven-project)
   - [Create the Calculator Class](#create-the-calculator-class)
   - [Add Multiplication and Compile](#add-multiplication-and-compile)
   - [Review Selected Method — Selection Context](#review-selected-method--selection-context)
   - [Plan Subtraction and JUnit Tests](#plan-subtraction-and-junit-tests)
-  - [Simplify the Plan (Optional)](#simplify-the-plan-optional)
-  - [Compare Implementation and Tests — File References](#compare-implementation-and-tests--file-references)
+  - [Refine the Plan (Optional)](#refine-the-plan-optional)
   - [Add Division and Run Tests](#add-division-and-run-tests)
   - [Review Division Tests (Optional)](#review-division-tests-optional)
   - [Inspect IntelliJ Diagnostics](#inspect-intellij-diagnostics)
 
-## Useful resources
+## Useful Resources
 
-### Claude Code overview
+### Claude Code Overview
 
 Official introduction to Claude Code.
 
 https://code.claude.com/docs/en/overview
 
-### Plans and pricing
+### Plans and Pricing
 
 Claude subscriptions and pricing information.
 
 https://claude.com/pricing
 
-### Claude Code installation
+### Claude Code Installation
 
 Official installation instructions for supported operating systems.
 
 https://code.claude.com/docs/en/setup
 
-### Windows installation troubleshooting
+### Windows Installation Troubleshooting
 
 Help with Windows installation, PATH, and command-discovery problems.
 
@@ -55,7 +54,7 @@ Official JetBrains plugin and IntelliJ integration documentation.
 
 https://code.claude.com/docs/en/jetbrains
 
-## Windows PowerShell installation
+## Windows PowerShell Installation
 
 If Claude Code is not installed yet, open **PowerShell** and run:
 
@@ -69,11 +68,11 @@ If the installer reports that the Claude Code directory is missing from your Win
 %USERPROFILE%\.local\bin
 ```
 
-Open a new PowerShell window after updating `Path`. See [Claude Code installation](#claude-code-installation) and [Windows installation troubleshooting](#windows-installation-troubleshooting) for details.
+Open a new PowerShell window after updating `Path`. See [Claude Code Installation](#claude-code-installation) and [Windows Installation Troubleshooting](#windows-installation-troubleshooting) for details.
 
-## Java development prompts
+## Java Development Prompts
 
-The prompts follow the order of the lesson. Use optional prompts only if a result requires refinement. Review proposed changes and command permissions before approval.
+The prompts follow the order of the lesson. This lesson demonstrates **IDE Diff Viewing, Selection Context, and Diagnostic Sharing**. Use optional prompts only if a result requires refinement; review proposed changes and command permissions before approval.
 
 ### Inspect the Maven Project
 
@@ -149,39 +148,31 @@ First, inspect the project and propose a plan.
 Do not implement anything yet.
 ```
 
-### Simplify the Plan (Optional)
+### Refine the Plan (Optional)
 
-If the plan proposes excessive tests, unnecessary dependencies, or unrelated changes, continue planning and request a revision before implementation.
-
-```text
-Keep the implementation plan, but simplify
-the test coverage.
-
-Focus on a small set of meaningful tests
-for normal values, negative values, and
-zero where relevant.
-
-Avoid repetitive boundary tests, unrelated
-refactoring, or unnecessary dependencies.
-
-Revise the plan before implementation.
-```
-
-### Compare Implementation and Tests — File References
-
-**Before submitting:** Use IntelliJ's **Send to Claude Code** action to include two explicit `@` file-and-line references: one for the `multiply()` method and another for its JUnit test. Retain both references in the prompt, then add the following text.
+**Use when the proposed plan includes work outside the requirement**, such as changes to existing methods, special overflow handling, or overflow-specific tests. In the plan approval menu, choose **Tell Claude what to change**, enter this feedback, and review the updated plan before approving implementation.
 
 ```text
-Compare the referenced multiplication method
-with its JUnit test.
+Refine the plan with these requirements:
 
-Does the test adequately verify the method's
-expected behavior?
+1. Keep all existing methods unchanged.
 
-Identify any important missing or redundant
-test cases.
+2. Add a subtraction method and create focused
+JUnit Jupiter tests for all Calculator methods,
+including the new subtraction method.
 
-Do not modify any files.
+3. Cover normal values, negative values, and
+zero where relevant. Avoid unnecessary overflow
+handling, overflow-specific tests, and optional
+overflow checks.
+
+4. Include only the Maven testing configuration
+needed to run the tests.
+
+Keep the solution simple and avoid unrelated
+changes.
+
+Update the plan only. Do not implement anything yet.
 ```
 
 ### Add Division and Run Tests
