@@ -416,10 +416,3 @@ After Prompt 3, compare typecheck/build output and the README's documented resul
    `npm install` is needed only if dependencies are missing. Visit <http://localhost:5173>.
 
 4. **Browser verification — follow generated README Section 9:** six products; search `Espresso` and filter Home & Kitchen; add two Wireless Headphones ($259.98); refresh to demonstrate cart persistence; place an order, check confirmation and stock decrement; request four Espresso Machines with only three in stock and verify the shortage error and unchanged cart.
-
-## Demo preparation notes
-
-- **Browser cart data** is stored in localStorage and is independent of the Docker database. A previously used browser may show saved cart items, even after app restart.
-- A live backend test may already have reduced Wireless Headphones stock **10 → 8**. If you need the original starting stock for recording, follow the generated README's **Demo reset** steps, but be aware that `docker compose down -v` **deletes the entire local MySQL data volume**, including any saved orders.
-- `mvn verify` does not keep a backend server running. Claude may also stop Vite after testing. Check each service before starting another instance.
-- This requirements-first, six-product demonstration is **different from the repository's older blueprint-based EcomStore**, which included payments, tracking and cancellation. Do not treat an older finished-code snapshot as equivalent to these prompts.
