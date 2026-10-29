@@ -4,6 +4,8 @@ Follow along with the **EcomStore** demonstration using three copy-ready Claude 
 
 **Stack:** Java 25, Spring Boot 4 (retain the version in `backend/pom.xml`), Maven, MySQL 8.4 in Docker, Flyway, Swagger/OpenAPI, React, TypeScript, Vite and Tailwind CSS.
 
+**Complete source code:** [EcomStore — Spring Boot + React GitHub repository](https://github.com/j2eeexpert2015/ecomstore). Clone it to explore the application built in this lesson, or follow the three prompts below to build your own version.
+
 ## Contents
 
 - [Useful resources](#useful-resources)
