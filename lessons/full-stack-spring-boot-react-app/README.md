@@ -1,439 +1,425 @@
 # Build a Full-Stack Spring Boot + React App with Claude Code in IntelliJ IDEA
 
-Follow along with the EcomStore demonstration: an online store built from an empty IntelliJ IDEA project with three Claude Code prompts. The backend is a Spring Boot 4 REST API on Java 25 with MySQL in Docker, and the frontend is React with Vite, TypeScript and Tailwind CSS. The prompts below follow the recording order so you can copy each one into Claude Code.
+Follow along with the **EcomStore** demonstration using three copy-ready Claude Code prompts: requirements, backend, and frontend. The application includes **product catalog, shopping cart, and checkout/order confirmation**, with six sample products across three categories. Payments, user accounts, order tracking and cancellation are out of scope.
 
-Finished code: **[ecomstore-spring-boot-react](https://github.com/j2eeexpert2015/ecomstore-spring-boot-react/tree/video-1-full-stack-app)** (tag `video-1-full-stack-app`).
+**Stack:** Java 25, Spring Boot 4 (retain the version in `backend/pom.xml`), Maven, MySQL 8.4 in Docker, Flyway, Swagger/OpenAPI, React, TypeScript, Vite and Tailwind CSS.
 
 ## Contents
-- [Useful Resources](#useful-resources)
-  - [Claude Code with IntelliJ IDEA](#claude-code-with-intellij-idea)
-  - [Spring Boot](#spring-boot)
-  - [springdoc-openapi](#springdoc-openapi)
-  - [Docker Desktop](#docker-desktop)
-  - [Node.js](#nodejs)
-  - [Vite and Tailwind CSS](#vite-and-tailwind-css)
+
+- [Useful resources](#useful-resources)
 - [Prerequisites](#prerequisites)
-- [Create the Project in IntelliJ IDEA](#create-the-project-in-intellij-idea)
-  - [Empty Project](#empty-project)
-  - [Project JDK](#project-jdk)
-  - [Backend Module](#backend-module)
-  - [Start Claude Code](#start-claude-code)
-- [Full-Stack Development Prompts](#full-stack-development-prompts)
-  - [Prompt 1 — Blueprint](#prompt-1--blueprint)
+- [Create the project in IntelliJ IDEA](#create-the-project-in-intellij-idea)
+- [Three development prompts](#three-development-prompts)
+  - [Prompt 1 — Functional requirements](#prompt-1--functional-requirements)
   - [Prompt 2 — Backend](#prompt-2--backend)
   - [Prompt 3 — Frontend](#prompt-3--frontend)
-- [Run the Store](#run-the-store)
-- [Troubleshooting](#troubleshooting)
-- [Finished Code](#finished-code)
-
-## Useful Resources
-
-### Claude Code with IntelliJ IDEA
-
-Installation and the JetBrains plugin are covered in the first lesson: [Claude Code with IntelliJ IDEA: Setup & Your First Java Project](../claude-code-installation-intellij-idea/README.md).
-
-https://code.claude.com/docs/en/jetbrains
-
-### Spring Boot
-
-Official Spring Boot reference documentation.
-
-https://docs.spring.io/spring-boot/index.html
-
-### springdoc-openapi
-
-The library that serves Swagger UI and `/v3/api-docs` for the backend.
-
-https://springdoc.org
-
-### Docker Desktop
-
-Installation instructions for Windows, macOS and Linux. MySQL runs in Docker in this lesson.
-
-https://docs.docker.com/desktop/
-
-### Node.js
-
-Download the LTS version; it includes npm.
-
-https://nodejs.org/en/download
-
-### Vite and Tailwind CSS
-
-The frontend tooling Claude sets up in Prompt 3.
-
-https://vite.dev/guide/
-
-https://tailwindcss.com/docs/installation/using-vite
+- [Run and verify EcomStore](#run-and-verify-ecomstore)
+- [Demo preparation notes](#demo-preparation-notes)
 
 ## Prerequisites
 
-- **JDK 25**: `java -version` shows 25, and `JAVA_HOME` points to JDK 25.
-- **IntelliJ IDEA** with the Claude Code plugin, and Claude Code logged in: `claude --version`.
-- **Docker Desktop**, running ("Engine running").
-- **Node.js LTS**: `node -v` and `npm -v`.
+- JDK 25 configured in IntelliJ and for command-line Maven (`java -version`, `mvn -v`).
+- IntelliJ IDEA, Claude Code CLI and JetBrains integration (`claude --version`).
+- **System Maven**; this lesson explicitly uses `mvn`, **not Maven Wrapper**.
+- Docker Desktop running, Docker Compose, Node.js with npm.
+- Ports **3306**, **8080** and **5173** available.
 
-Ports 3306, 8080 and 5173 must be free. Use a project folder without spaces in its path.
+## Create the project in IntelliJ IDEA
 
-## Create the Project in IntelliJ IDEA
+1. File → New → Project → **Empty Project** named `ecomstore`. Its directory is the project root.
+2. Set Project SDK to **JDK 25**.
+3. File → New → Module → **Spring Boot**. Name the module `backend` under `ecomstore/backend/` and use **Java 25**, **Maven**, **Jar**, group `org.learningfromexperience`, artifact `ecomstore`, package `org.learningfromexperience.ecomstore`, a stable Spring Boot 4 version, and **Spring Web** as the initial dependency.
+4. Confirm that `backend/pom.xml` exists. Open the terminal at the **project root**, launch `claude` in a **fresh session**, and use **Auto mode** for the three prompts.
+5. Review the generated files and results after each prompt; do not assume reported tests or browser interactions took place unless shown in Claude's output.
 
-### Empty Project
+## Three development prompts
 
-File → New → Project → **Empty Project**. Name `ecomstore`, location for example `C:\projects`. This folder is the project root; it will hold `backend/`, `frontend/`, `docs/` and `compose.yaml`.
+The following prompt blocks are reproduced **verbatim** from the finalized EcomStore recording script. Submit them in this order.
 
-### Project JDK
+### Prompt 1 — Functional requirements
 
-File → Project Structure → Project → SDK **25**.
-
-### Backend Module
-
-File → New → Module → **Spring Boot**, with these values:
-
-| Field | Value |
-|---|---|
-| Name | `backend` (the location must end in `ecomstore\backend`) |
-| Language / Type | Java / Maven |
-| Group | `org.learningfromexperience` (or your own) |
-| Artifact | `ecomstore` |
-| Package name | `org.learningfromexperience.ecomstore` |
-| JDK / Java | 25 / 25 |
-| Packaging | Jar |
-| Spring Boot | newest 4.1.x (not SNAPSHOT, M or RC) |
-| Dependencies | **Spring Web** only. Claude adds the rest. |
-
-### Start Claude Code
-
-Open the Terminal in the `ecomstore` folder and run `claude`. Run all three prompts in the same session.
-
-## Full-Stack Development Prompts
-
-These prompts match the recording, in demonstration order. The whole lesson uses **Auto mode** (Shift+Tab to switch). Each prompt prints a `[Step N/…]` status line per step and ends with a report under fixed headings. Review what Claude built before moving on: the code, the tests, Swagger UI and the browser.
-
-### Prompt 1 — Blueprint
-
-Writes `docs/PROJECT_BLUEPRINT.md` and a first `README.md`. No application code yet.
+Creates `docs/requirements.md` and the initial project `README.md`. No application code yet.
 
 ```text
-Create docs/PROJECT_BLUEPRINT.md in the current folder, containing the specification below, formatted with clear headings and tables where useful. Then create README.md at the project root as described in section 11; at this point only the blueprint exists. Do not write any application code yet. Finish with a short report under the headings "Created" and "Notes".
+Create docs/requirements.md as a short FUNCTIONAL specification of EcomStore
+based on the requirements below.
 
-SPECIFICATION — EcomStore
+Group requirements under Catalog, Cart, and Checkout. Give each distinct,
+testable behavior a stable ID — CAT-001..., CART-001..., CHK-001... —
+numbered within its group and never reused.
 
-1. WHAT WE ARE BUILDING
-An online store with no user accounts. Customers:
-- browse and search products;
-- keep a cart in the browser;
-- check out with their contact details and a simulated payment;
-- view or cancel their order by order number.
-Stack:
-- Backend: Java 25, Spring Boot (version in backend/pom.xml), Maven, Spring Web MVC, Spring Data JPA, Bean Validation, Flyway, MySQL 8.4 in Docker, springdoc-openapi. No Lombok, no MapStruct.
-- Frontend: React + Vite + TypeScript + Tailwind CSS + React Router.
-Project layout (the current folder is the project root):
-- backend/: the Spring Boot Maven project, created with Spring Initializr. All backend code, tests, resources and Maven files live here.
-- frontend/: the React app, created later.
-- docs/: this blueprint and the test report.
-- compose.yaml and docker/mysql/init/: MySQL in Docker.
-The backend keeps the Initializr project's groupId, artifactId and main class. The main class's package is the base package, with subpackages entity, repository, service, dto, mapper, controller, exception, config.
+State each requirement as "The system SHALL ..." and place one or more
+"WHEN ... THEN ..." acceptance scenarios directly below it.
 
-2. DOMAIN MODEL (package entity)
-- Category (table categories): name (unique), description, active.
-- Product (table products): name, description, price, stock, active, category.
-- Customer (table customers): email (unique), fullName, phone.
-- Order (table orders): orderNumber (ORD- + 8 uppercase alphanumeric chars, unique), customer, status, shippingAddress, totalAmount, items, payment.
-- OrderItem (table order_items): product, productName and unitPrice copied at purchase time, quantity, subtotal.
-- Payment (table payments): one per order; method, status, amount, transactionId.
-- Enums:
-  - OrderStatus: PENDING, CONFIRMED, PROCESSING, SHIPPED, DELIVERED, CANCELLED.
-  - PaymentMethod: CREDIT_CARD, DEBIT_CARD, UPI, NET_BANKING, WALLET, CASH_ON_DELIVERY.
-  - PaymentStatus: PENDING, COMPLETED, FAILED, REFUNDED, CANCELLED.
-- Money is BigDecimal (DECIMAL(10,2)).
-- Long ids; createdAt/updatedAt as Instant on every entity; no hard deletes.
-- Saving an Order saves its items and payment.
+After these groups, add Sample data, Visual expectations, and Out of scope.
+Do not invent more features.
 
-3. REPOSITORIES (package repository)
-- CategoryRepository: findByActiveTrueOrderByNameAsc().
-- ProductRepository:
-  - findCatalog(search, categoryId, pageable): active products in active categories; search is a case-insensitive "name contains"; search and categoryId are optional;
-  - findActiveById(id): one active product in an active category;
-  - findAllByIdInForUpdate(ids): products by ids with a pessimistic write lock, in ascending id order (used by checkout and cancel).
-- CustomerRepository: findByEmail(email).
-- OrderRepository: findByOrderNumber(orderNumber); existsByOrderNumber(orderNumber).
+Also create a short README.md describing the goal and marking
+backend/frontend as not implemented.
 
-4. SERVICES AND BUSINESS RULES (package service)
-CatalogService: listCategories(); listProducts(search, categoryId, page, size, sort) with default page size 12, maximum 50, and sort by name, price or createdAt (any other sort field returns 400); getProduct(id) (404 if missing or inactive). Inactive products, and products in inactive categories, are never returned.
+FEATURE 1 — PRODUCT CATALOG
+- Show a single catalog of products with name, description, category, price, and stock
+  quantity.
+- Search by product name using case-insensitive substring matching after trimming spaces,
+  and filter by category. Either filter is optional; they can work together.
+- Customers can add a product directly to the shopping cart. No separate product-detail
+  page.
 
-OrderService.placeOrder (one transaction):
-- Validate: items not empty, quantities positive, no duplicate productIds (otherwise 400).
-- Find the customer by email or create them; update name and phone if they already exist.
-- Lock the products. If any product is missing, inactive or lacks stock, reject with 409 listing every failing line, and change nothing.
-- Calculate prices and totals on the server from current product prices; never trust the client.
-- Create the order, items and payment; reduce stock.
-- Order number collision: retry up to 3 times, then fail with 500 and log it. Order numbers come from an OrderNumberGenerator component.
-- Simulated payment: CASH_ON_DELIVERY starts PENDING; all other methods are COMPLETED immediately with a generated transactionId. No card data.
+FEATURE 2 — SHOPPING CART
+- Add products (adding the same product again increases its quantity by one), change
+  quantities (positive integers), remove products, and show line subtotals and cart total.
+- Preserve the cart when the page is refreshed; show the total number of units in the
+  header cart count.
+- Customers may increase quantities in the cart even beyond the stock currently
+  available. The server checks stock only when an order is submitted at checkout.
+  Products showing zero stock cannot be added from the catalog. If an item already in
+  the cart later becomes unavailable, keep it in the cart until checkout reports the
+  shortage; do not silently remove it or change its quantity.
+- No login or account is required.
 
-OrderService.changeStatus. Allowed moves:
-- PENDING -> CONFIRMED or CANCELLED
-- CONFIRMED -> PROCESSING or CANCELLED
-- PROCESSING -> SHIPPED or CANCELLED
-- SHIPPED -> DELIVERED
-DELIVERED and CANCELLED are final; anything else is 409. Moving to CANCELLED through changeStatus is allowed wherever the table allows it, including from PROCESSING, and has the same effects as cancelOrder: stock restored exactly once, and the payment refunded or cancelled. cancelOrder, the customer's cancel, stays limited to PENDING and CONFIRMED. When an order becomes DELIVERED, a PENDING cash-on-delivery payment becomes COMPLETED.
+FEATURE 3 — CHECKOUT AND ORDER CONFIRMATION
+- Collect customer full name, email address, and shipping address; require at least one
+  order item.
+- Reject missing/invalid required fields and nonpositive quantities with a clear message
+  identifying the problem.
+- Validate available stock at checkout. If any requested quantity is unavailable, identify
+  the affected item and requested/available quantities. Do not create a partial order or
+  change stock on failure.
+- Use current authoritative product prices, not cart-submitted prices. Calculate the
+  correct order total.
+- On success save the order and its items, reduce stock, and show a unique order number,
+  ordered items, quantities, item subtotals, total and order date/time. Clear the cart only
+  after confirmed success.
 
-OrderService.cancelOrder (one transaction):
-- Allowed only in PENDING or CONFIRMED (otherwise 409).
-- Lock the products and restore stock exactly once.
-- A COMPLETED payment becomes REFUNDED; a PENDING payment becomes CANCELLED.
+SAMPLE PRODUCTS (use these exact six records in three categories):
+- Electronics: Wireless Headphones, $129.99, stock 10 — Comfortable over-ear headphones for
+  everyday listening.
+- Electronics: Mechanical Keyboard, $89.50, stock 15 — Compact mechanical keyboard with
+  tactile switches.
+- Books: Clean Code, $34.95, stock 20 — A practical book about writing maintainable
+  software.
+- Books: Spring Boot in Practice, $44.00, stock 10 — Hands-on guidance for building Spring
+  Boot applications.
+- Home & Kitchen: Espresso Machine, $249.99, stock 3 — Countertop espresso maker for home
+  coffee brewing.
+- Home & Kitchen: Water Bottle, $24.99, stock 25 — Reusable insulated bottle for daily use.
+- Use these exact descriptions.
 
-OrderService.getOrder: by orderNumber (404 if not found).
+VISUAL EXPECTATIONS
+A simple, responsive EcomStore interface: navy header, prominent search, amber Add to Cart
+buttons and cart count, light-gray background, white rounded product cards, category-filter
+pills under the header, a green/amber/red availability badge on each product card, and a
+dark footer.
 
-5. CONTROLLERS AND API (packages controller, dto, mapper, exception, config)
-Base path /api/v1. Controllers are thin: CategoryController, ProductController, OrderController. Requests and responses are Java records; mappers CatalogMapper and OrderMapper are hand-written; entities are never exposed. Services return these records, and mapping happens inside the service transaction, because open-in-view is off.
-Endpoints:
-- GET /categories -> List<CategoryResponse>
-- GET /products?search=&categoryId=&page=&size=&sort= -> PageResponse<ProductResponse>
-- GET /products/{id} -> ProductResponse
-- POST /orders with CreateOrderRequest -> 201 with OrderResponse
-- GET /orders/{orderNumber} -> OrderResponse
-- POST /orders/{orderNumber}/cancel -> OrderResponse
-- PATCH /orders/{orderNumber}/status with UpdateOrderStatusRequest -> OrderResponse (for demos in Swagger; intentionally unprotected in this version)
-Records (exact field names):
-- CategoryResponse {id, name, description}
-- ProductResponse {id, name, description, price, stock, categoryId, categoryName}
-- PageResponse<T> {content, page, size, totalElements, totalPages}
-- CreateOrderRequest {customer: CustomerRequest {email, fullName, phone}, shippingAddress, paymentMethod, items: [OrderItemRequest {productId, quantity}]}
-- UpdateOrderStatusRequest {status}
-- OrderResponse {orderNumber, status, customer {email, fullName, phone}, shippingAddress, items: [{productId, productName, unitPrice, quantity, subtotal}], totalAmount, payment {method, status, amount, transactionId}, createdAt}
-Errors: GlobalExceptionHandler (@RestControllerAdvice) returns ProblemDetail, using ResourceNotFoundException (404), InvalidRequestException (400), ConflictException (409), InsufficientStockException (409) and OrderNumberGenerationException (500):
-- 400: title "Validation failed", plus errors: [{field, message}];
-- 404: title "Not found";
-- 409, stock: title "Insufficient stock", plus failures: [{productId, productName, requested, available}];
-- 409, other conflicts: title "Conflict", with a detail sentence;
-- 500: title "Order number generation failed".
-OpenApiConfig: Swagger UI and /v3/api-docs via springdoc-openapi (a version compatible with this Spring Boot version). The API docs show the real status codes (for example 201 for POST /orders). The example body for POST /orders is exactly manual check 2 in section 8.
-CorsConfig: allow only http://localhost:5173 on /api/**.
+Clear empty/loading/error states. Badges: green “In stock” for stock above 5, amber “Only N
+left” for stock 1–5, and red “Out of stock” for stock 0; disable Add to Cart at stock 0.
+Prices display as USD with two decimal places.
 
-6. FRONTEND (frontend/)
-- Vite React + TypeScript app with Tailwind CSS and React Router.
-- Files:
-  - frontend/src/api: client.ts (fetch wrapper and error handling), types.ts (types matching the API records), catalog.ts, orders.ts;
-  - frontend/src/cart: CartContext.tsx (cart state saved in localStorage);
-  - frontend/src/components: Header, CategoryPills, ProductCard, StockBadge, StatusBadge, Pagination, Footer, States (loading, empty and error);
-  - frontend/src/pages: CatalogPage, ProductPage, CartPage, CheckoutPage, OrderPage, TrackOrderPage.
-- The API URL comes from VITE_API_BASE_URL in frontend/.env.local; frontend/.env.example documents it.
-- Pages:
-  - / : product catalog with category filter and pagination; the search term comes from the header search box
-  - /products/:id : product details with a quantity selector, capped at available stock, and Add to cart
-  - /cart : change quantity or remove items, capped at available stock
-  - /checkout : email, full name, phone, shipping address, payment method; on 409, show which items failed
-  - /orders/:orderNumber : order details, with a Cancel button while cancellable
-  - /track : a small form to enter an order number and open its order page
-- Design: a clean marketplace look, without product images.
-  - Header: dark navy bar with the store name "EcomStore" in white on the left, a wide search box in the middle, and "Track order" and a Cart link with an amber item-count badge on the right. Nothing else in the header.
-  - Category filter: a row of pill buttons under the header (All plus each category); the active pill is navy with white text.
-  - Page background light grey; product cards white with rounded corners and a soft shadow, in a responsive grid.
-  - Product card: category as a small coloured label, product name in bold, a two-line description, the price large and bold, a stock badge (green "In stock", amber "Only N left", red "Out of stock"), and a full-width amber "Add to cart" button.
-  - Order page: a coloured status badge for the order and for the payment.
-  - Footer: a simple dark footer with the store name.
-  - Colours: navy for structure, amber for actions, green/amber/red only for status. No gradients, no image placeholders, no sort control.
-- After a successful order, clear the cart and open the order page.
-- Prices formatted with Intl.NumberFormat in USD. Loading, empty and error states. Responsive down to mobile width.
-- Behaviour details:
-  - the catalog keeps search, category and page in the URL (/?search=&categoryId=&page=);
-  - the stock badge shows "Only N left" when stock is 5 or less;
-  - the cart badge in the header appears only when the cart has items;
-  - the cart keeps each product's price and stock from when it was added; the server checks everything again at checkout;
-  - the Cancel button asks for confirmation with the browser's confirm dialog;
-  - keep the linter that comes with the Vite template; formatting and small helper functions live in frontend/src/api/client.ts.
 
-7. DATABASE AND CONFIGURATION
-- MySQL 8.4 runs in Docker via compose.yaml at the project root, with one service, mysql:
-  - port 3306, a named volume, a healthcheck;
-  - MYSQL_DATABASE=ecomstore_db; MYSQL_USER=${DB_USERNAME:-ecomstore}; MYSQL_PASSWORD=${DB_PASSWORD:-ecomstore}; a random root password;
-  - docker/mysql/init/01-create-test-database.sh creates ecomstore_test and gives the app user full access to it.
-- Local demo credentials: username ecomstore, password ecomstore. They can be overridden with DB_USERNAME and DB_PASSWORD, but nothing requires setting them.
-- Flyway migrations in backend/src/main/resources/db/migration: V1__create_schema.sql creates the schema; V2__seed_catalog.sql seeds exactly the categories and products below, inserted in this order, so on a fresh database the ids are 1-4 and 1-12. Prices are in USD. No seed customers or orders.
-  Categories (id | name | description):
-  1 | Electronics | Audio, accessories and gadgets
-  2 | Books | Technical and general reading
-  3 | Home & Kitchen | Everyday essentials for the home
-  4 | Sports & Outdoors | Gear for training and the outdoors
-  Products (id | name | category | price | stock | description):
-  1 | Wireless Headphones | Electronics | 129.99 | 25 | Over-ear Bluetooth headphones with 30-hour battery
-  2 | Mechanical Keyboard | Electronics | 89.50 | 30 | Tactile switches, aluminium frame, backlit keys
-  3 | Portable Power Bank | Electronics | 39.99 | 4 | 20,000 mAh fast-charging power bank
-  4 | Clean Code | Books | 34.95 | 40 | A handbook of agile software craftsmanship
-  5 | Spring Boot in Practice | Books | 44.00 | 25 | Hands-on guide to building Spring applications
-  6 | Limited Edition Atlas | Books | 189.00 | 3 | Illustrated world atlas, collector's edition
-  7 | Espresso Machine | Home & Kitchen | 249.99 | 12 | 15-bar pump espresso maker with milk frother
-  8 | Ceramic Dinner Set | Home & Kitchen | 79.00 | 20 | 16-piece stoneware set for everyday dining
-  9 | Stainless Steel Water Bottle | Home & Kitchen | 24.99 | 60 | Insulated 750 ml bottle, keeps drinks cold
-  10 | Trail Running Shoes | Sports & Outdoors | 109.00 | 18 | Lightweight shoes with a grippy outsole
-  11 | Two-Person Camping Tent | Sports & Outdoors | 159.00 | 5 | Waterproof dome tent with quick setup
-  12 | Yoga Mat | Sports & Outdoors | 19.99 | 50 | Non-slip 6 mm mat with carry strap
-- backend/src/main/resources/application.properties:
-  - jdbc:mysql://localhost:3306/ecomstore_db, with username ${DB_USERNAME:ecomstore} and password ${DB_PASSWORD:ecomstore};
-  - ddl-auto=validate; open-in-view off.
-- Ports: MySQL 3306, backend 8080, frontend 5173.
+OUT OF SCOPE
+Payments, accounts, product detail, images, pagination, sorting, order tracking/lookup,
+cancellation, refunds, status workflow, admin, coupons, email, deployment, and
+production-scale concurrency/load testing.
 
-8. TESTS (backend/src/test/java)
-- Test configuration: backend/src/test/resources/application.properties points every Spring test, including the one Initializr generated, at ecomstore_test (same credentials). Tests never touch ecomstore_db. Flyway applies V1 and V2 to ecomstore_test as well.
-- Write exactly the test classes, groups and tests below: no more, no fewer. Group tests with @Nested using the group names shown, and give every test the @DisplayName shown, so IntelliJ's test tree reads like a specification. Parameterized tests run one case per allowed or rejected move.
-- OrderServiceTest (JUnit 5 + Mockito, no database):
-  - Place order: "creates the order, items and payment with totals from current prices"; "reduces stock by the ordered quantities"; "rejects the whole order with 409 when any item lacks stock, and lists every failing item"; "rejects an inactive or unknown product with 409"; "rejects an empty item list, a non-positive quantity or a duplicate product with 400"; "reuses an existing customer by email and updates name and phone"; "marks cash on delivery PENDING and other methods COMPLETED with a transaction id"; "retries the order number on a collision and fails with 500 after 3 attempts".
-  - Status changes: "allows every move in the status table" (parameterized); "rejects every other move with 409" (parameterized); "completes a pending cash-on-delivery payment when the order is delivered".
-  - Cancel order: "restores stock for every item"; "refunds a completed payment"; "cancels a pending cash-on-delivery payment"; "rejects cancelling an order that is no longer PENDING or CONFIRMED with 409".
-  - Get order: "returns 404 for an unknown order number".
-- CatalogServiceTest (JUnit 5 + Mockito, no database):
-  - Catalog: "uses page size 12 by default and caps it at 50"; "rejects an unknown sort field with 400"; "returns 404 for a missing or inactive product".
-- OrderControllerTest (@WebMvcTest, no database):
-  - Order API: "POST /orders returns 201 with the order"; "POST /orders returns 400 with the failing fields"; "POST /orders returns 409 with the failing items"; "GET /orders/{orderNumber} returns 404 for an unknown order"; "PATCH /orders/{orderNumber}/status returns 409 for a move not in the table".
-- ProductControllerTest (@WebMvcTest, no database):
-  - Product API: "GET /products returns a page with content, page, size, totalElements and totalPages"; "GET /products/{id} returns 404 for an unknown product".
-- OrderFlowIntegrationTest (@SpringBootTest against ecomstore_test, through HTTP):
-  - Order flow: "a checkout saves the order, items and payment and reduces stock in the database"; "an order with too little stock saves nothing and leaves stock unchanged"; "a cancel restores stock and refunds the payment in the database"; "the catalog hides inactive products and products in inactive categories".
-  - Each integration test creates the categories and products it needs and removes what it created, so the suite can run repeatedly, in any order, and never depends on the seed data. Integration tests need the MySQL container running; run the suite with the Maven wrapper from backend/.
-- Keep the Initializr-generated test that checks the application context starts.
-- Test report: after running the suite, write docs/TEST_REPORT.md with:
-  - a summary line: tests run, passed, failed, and the date;
-  - a table with one row per test group: test class, group, what it proves (one sentence), number of tests, result;
-  - a table mapping each business rule in section 4 to the test groups that cover it;
-  - the command to run the tests again.
-- Manual checks (used in the README and the demo; run against ecomstore_db in Swagger UI, starting from the seed data):
-  - Check 1: GET /api/v1/products?categoryId=2 -> 200 with the 3 books.
-  - Check 2: POST /api/v1/orders with {"customer":{"email":"riya@example.com","fullName":"Riya Sen","phone":"9876543210"},"shippingAddress":"12 Park Street, Kolkata 700016","paymentMethod":"UPI","items":[{"productId":1,"quantity":1},{"productId":4,"quantity":2}]} -> 201, total 199.89, payment COMPLETED; stock of product 1 goes 25 -> 24 and product 4 goes 40 -> 38.
-  - Check 3: POST /api/v1/orders with {"customer":{"email":"not-an-email","fullName":"","phone":"9876543210"},"shippingAddress":"12 Park Street, Kolkata 700016","paymentMethod":"UPI","items":[]} -> 400 with errors for customer.email, customer.fullName and items.
-  - Check 4: POST /api/v1/orders with {"customer":{"email":"riya@example.com","fullName":"Riya Sen","phone":"9876543210"},"shippingAddress":"12 Park Street, Kolkata 700016","paymentMethod":"UPI","items":[{"productId":4,"quantity":1},{"productId":3,"quantity":5}]} -> 409 listing Portable Power Bank, requested 5, available 4; no stock changes.
-  - Check 5: PATCH /api/v1/orders/{orderNumber from check 2}/status with {"status":"DELIVERED"} -> 409.
-  - Check 6: POST /api/v1/orders/{orderNumber from check 2}/cancel -> 200, status CANCELLED, payment REFUNDED; stock back to 25 and 40.
+GUARDRAILS — KEEP REQUIREMENTS IMPLEMENTATION-INDEPENDENT: This requirements document must
+describe WHAT the app does, not HOW to implement it. Do not choose Java classes, entities,
+database tables, API routes, HTTP status codes, JSON schemas, frameworks, architecture, or
+test file names. Those decisions belong to subsequent prompts.
 
-9. NOT IN THIS VERSION
-Login and registration, Spring Security/JWT, per-user order history, server-side cart, admin pages, real payments, email, image upload, Dockerizing the backend or frontend, deployment. These come in later videos. Do not add code or placeholders for them.
-
-10. RULES
-- Build exactly what this blueprint specifies: no extra features, pages, controls, endpoints, fields, files or dependencies, and use the names given here. If something is unclear, choose the simplest option that fits and list it under "Decisions" in the report.
-- Never weaken validation or change test assertions just to make tests pass; fix the code or explain the problem.
-- Never drop databases, delete the Docker volume or edit an applied migration without asking. The one exception: this project's MySQL data is disposable demo data, so if a container or volume from an earlier run of this project exists before the first migration run, remove it with docker compose down -v and start clean, without asking.
-- No TODOs or placeholder code.
-- Only report checks you actually ran, with their real results.
-
-11. DOCUMENTATION (README.md at the project root)
-Every prompt that changes the project updates README.md before its final report. Describe only what actually exists; mark later parts "Not built yet". README.md always has these sections, in this order:
-- Prerequisites: JDK 25; Maven (the Maven wrapper in backend/ is used, no separate install); Docker Desktop, running; Node.js LTS with npm; an IDE such as IntelliJ IDEA. Ports 3306, 8080 and 5173 must be free.
-- Status: a short checklist of what is built (blueprint, backend, frontend).
-- Architecture: a small text diagram (browser -> React frontend -> Spring Boot REST API -> MySQL in Docker) with one line per part.
-- Project structure: the main folders and key files, each with one line on its purpose. No list of every class.
-- Run it: the exact commands to start MySQL, the backend and the frontend, for Windows PowerShell and for macOS/Linux.
-- Test it yourself: how to run the automated tests and where the test report is (docs/TEST_REPORT.md); then the six manual checks from section 8, each with its request, body, expected status and expected stock change; then browser steps once the frontend exists.
-- Demo data: the database credentials and what the seed data contains.
 ```
 
-Check that `docs/PROJECT_BLUEPRINT.md` has sections 1–11, and that the status in `README.md` ticks only the blueprint.
+After Prompt 1, review the requirement IDs and acceptance scenarios, six sample products, visual expectations, out-of-scope list and initial README implementation status.
 
 ### Prompt 2 — Backend
 
-Make sure Docker Desktop is running. Claude builds the backend, runs the tests and the six manual checks, and updates `README.md`.
+Reads `docs/requirements.md` and `README.md`; creates `docs/backend-design.md`, implements and tests Spring Boot/MySQL APIs, and adds a reproducible README runbook.
 
 ```text
-Read docs/PROJECT_BLUEPRINT.md, then build the complete backend. Before step 1, check that Docker is running; if it is not, start Docker Desktop and wait up to two minutes for the engine. Work through the steps below in order without stopping. Never pause to ask about decisions: when the blueprint does not settle something, choose the simplest option that fits, record it under Decisions and continue. Stop only for a blocker you cannot resolve yourself, and tell me what it is. After each step, print one status line in the form "[Step N/9] <step name>: <what was created or done> - <result of its check>".
+OBJECTIVE
+Read docs/requirements.md and README.md. Design and implement the backend for the
+three approved EcomStore features. Do not implement the frontend or add features.
 
-Where things go: the current folder is the project root, and the Spring Boot project is in backend/. If backend/pom.xml does not exist, stop and tell me. All Java code, tests, resources and Maven changes stay inside backend/; never create src/ or pom.xml at the project root. Only compose.yaml and docker/mysql/init/ go at the project root. Run Maven with the wrapper inside backend/.
+TECHNICAL CONSTRAINTS
 
-1. Dependencies: add to backend/pom.xml what the blueprint's stack needs and the project does not have yet: Spring Data JPA, Validation, Flyway with its MySQL module, the MySQL driver, and springdoc-openapi. Use the versions managed by Spring Boot; only springdoc needs an explicit version, one compatible with this Spring Boot version. Add nothing else. The project must still compile.
-2. Domain model: create the entities and enums from blueprint section 2, with the names given there.
-3. Repositories: create them from section 3, with the method names given there.
-4. Services: implement the business rules from section 4.
-5. Controllers and API: create the DTOs, mappers, controllers and error handling from section 5. The backend must compile.
-6. Database and configuration (section 7):
-   - Create compose.yaml and the init script at the project root. If a MySQL container or volume from an earlier run of this project exists, remove it with docker compose down -v (blueprint section 10 allows this). Start MySQL with docker compose up -d --wait, and verify both databases exist using the mysql client inside the container.
-   - Write the Flyway migrations and application properties.
-   - Configure CORS and Swagger.
-   - Start the backend once to confirm Flyway runs and schema validation passes.
-7. Tests: write exactly the tests listed in section 8 and run all of them. Fix real defects only. Then write docs/TEST_REPORT.md as described in section 8.
-8. Run and verify. Start the backend and run the six manual checks from section 8 as HTTP requests, in order, and confirm Swagger UI loads. After checks 2, 4 and 6, confirm the stock in MySQL through the container. Then delete the customers, orders, order items and payments you created in ecomstore_db, so it again holds only the seed data, and confirm the stock is back to the seed values. Stop the backend and leave MySQL running.
-9. Documentation: update README.md as described in blueprint section 11, now including the backend.
+Java and Spring Boot
+- Use Java 25 and the existing backend/pom.xml. Keep its Spring Boot version,
+  coordinates, base package and main class. If the project is missing, stop and report it.
+- Use Spring MVC, Spring Data JPA and Bean Validation. Use Java records for API DTOs,
+  BigDecimal for money, and no Lombok or MapStruct.
 
-Final report, under exactly these headings:
-- What was built: one line per step.
-- Checks run: every check you actually ran, with its real result: the build, the start against MySQL, the test suite (tests run, passed, failed) and the six manual checks.
-- Decisions: anything the blueprint did not settle and how you resolved it, or "None".
-- Commands: how to start MySQL and the backend, and how to run the tests.
+Maven and testing
+- Use the system-installed `mvn`, not Maven Wrapper. Keep code and tests in backend/.
+- Use JUnit 5. If tests use *IT filenames, configure Failsafe so `mvn verify` runs them.
+
+MySQL and Docker
+- Use MySQL 8.4 in a root compose.yaml with one service named `mysql`, port 3306,
+  a named volume and a health check.
+- Configure database `ecomstore_db`, user `ecomstore`, password `ecomstore`.
+  The Docker MYSQL_USER/MYSQL_PASSWORD settings create the user. A one-time initialization
+  SQL file creates `ecomstore_test` and grants that existing user access to it;
+  do not CREATE USER again. Tests must use the isolated test database.
+
+Flyway
+- Use `spring-boot-starter-flyway` and `flyway-mysql`.
+- Use versioned SQL migrations to create the schema and seed the exact three
+  categories and six products from docs/requirements.md.
+
+OpenAPI and CORS
+- Use springdoc OpenAPI compatible with the installed Spring Boot version.
+- Allow CORS for `/api/**` only from `http://localhost:5173`, including preflight.
+
+REST API CONTRACT
+Use exactly these three public operations under `/api/v1`. Do not expose JPA entities.
+
+- GET /categories
+  Response: [{id, name}]
+- GET /products?search=&categoryId=
+  Response: [{id, name, description, price, stock, categoryId, categoryName}]
+- POST /orders
+  Request: {customer:{fullName,email}, shippingAddress,
+            items:[{productId,quantity}]}
+  Success (201): {orderNumber, customer, shippingAddress,
+                  items:[{productId,productName,unitPrice,quantity,subtotal}],
+                  totalAmount, createdAt}
+
+API ERROR HANDLING
+- Use Spring ProblemDetail: HTTP 400 identifies invalid fields; HTTP 409 identifies
+  each short-stock product with requested and available quantities.
+
+GUARDRAILS
+Preserve this public API contract. Calculate prices on the server and create orders
+transactionally. Decrement stock with a conditional atomic update that succeeds only
+when sufficient stock remains; roll back the entire order on any failure. Use a unique
+order number without elaborate collision-retry logic. Keep the design minimal.
+
+IMPLEMENTATION
+
+1. Backend design
+   IMPORTANT — DOCUMENT DECISIONS: Create docs/backend-design.md, beginning with a
+   Constraints section recording the stack, version, databases, Maven rules, CORS
+   and API contract above. Then document the actual domain model, schema, services,
+   transactions, stock strategy, request/response examples and error format.
+
+2. Backend implementation
+   Implement the design using controllers, services, DTOs, persistence, Docker Compose
+   and Flyway migrations. Do not add features outside docs/requirements.md.
+
+3. Automated tests
+   Test catalog/search/filter, valid order and stock reduction, invalid requests,
+   and insufficient-stock rollback. Each test must have a plain-English @DisplayName
+   beginning with the relevant requirement ID from docs/requirements.md.
+
+4. Backend verification
+   Start MySQL; run `mvn verify` from backend/; start Spring Boot; check the three
+   endpoints and live `/v3/api-docs` with real HTTP requests. Include a successful
+   order and an insufficient-stock rejection. Update docs/backend-design.md if the
+   implementation differs, without changing the agreed public API. Report actual
+   results and any checks not run.
+
+   Live order requests modify demo stock. Do not perform manual SQL deletion or stock
+   restoration to hide those changes; document the clean database reset in README.md.
+
+5. README runbook
+   IMPORTANT — REPRODUCIBLE RUNBOOK: Update README.md so someone can run and
+   understand the project without seeing these prompts. Preserve the unnumbered
+   project goal and status at the top, updating the backend status accurately.
+   Provide commands compatible with PowerShell and CMD, including the working
+   directory, expected URLs and results.
+
+   Use these numbered sections, leaving sections 8 and 9 for Prompt 3:
+   1. Prerequisites — JDK 25, system Maven and Docker commands.
+   2. Database setup — Docker startup, databases and credentials.
+   3. Backend project structure — show a readable, actual file-and-folder tree in
+      a fenced `text` block, starting at the project root and showing the important
+      backend source, tests, resources, configuration, migrations and Docker files.
+      Annotate significant files or folders inline with short `#` comments explaining
+      their roles. Show real files only; do not invent or dump generated build files.
+      Prompt 3 will expand this into ONE combined backend-and-frontend project tree.
+   4. Database schema and sample data — show the actual database tables in a
+      Markdown table with columns such as Table, Column, SQL type, Key/constraint,
+      and Purpose (plain-English meaning of the column). Explain relationships
+      and important constraints. Separately list the six actual seeded products
+      in a table with ID, Product, Category, Price, Stock and Purpose (for example,
+      which demo/test scenario the seed supports). Use actual IDs from the database,
+      not assumed positions. Give a short SQL inspection command after the tables.
+   5. Flyway migrations — each actual SQL file, its version, purpose and execution
+      order; which script seeds data; when migrations run at test/app startup;
+      `flyway_schema_history` inspection command. Distinguish Docker initialization
+      from Flyway migrations and ordinary order data changes. Applied versioned
+      migrations are not edited.
+   6. Backend tests — `mvn verify`, actual test class/file and @DisplayName for
+      EVERY executed test, linked requirement ID, PASS/FAIL/SKIPPED and totals.
+   7. Run backend and test APIs with Swagger UI — use short, numbered instructions:
+      (a) In the project root, check/start MySQL using Docker Compose and verify
+          service health. Explain whether this step is already done.
+      (b) In a terminal opened in `backend/`, run `mvn spring-boot:run` and wait
+          for successful startup. Do not imply that this terminal can be used for
+          other commands while the app is running; use another terminal if needed.
+      (c) Open `http://localhost:8080/swagger-ui/index.html` and locate the
+          Categories, Products and Orders endpoints. Include the raw API docs URL
+          `http://localhost:8080/v3/api-docs` as an optional check.
+      (d) Explain the Swagger UI interaction: expand endpoint -> Try it out ->
+          enter parameters or edit JSON -> Execute -> inspect HTTP status and
+          Response body. Start with GET /api/v1/categories (3 categories) and
+          GET /api/v1/products (6 products). Obtain product IDs from the live
+          product response and use those IDs in subsequent order requests.
+      (e) For POST /api/v1/orders, show clearly labeled, copyable JSON request
+          bodies: successful checkout (2 Wireless Headphones), insufficient stock
+          (4 Espresso Machines) and invalid email. Use the same customer/address
+          request shape as the implemented API. Give expected status and the key
+          response fields for each: 201 and total 259.98 with stock 10 -> 8;
+          409 with requested 4/available 3 and no order/stock change; 400 with
+          a customer.email validation error. State that IDs, order numbers and
+          timestamps can differ. Put request examples directly in the relevant
+          Swagger steps, not in a separate unexplained list of JSON files/curl.
+      (f) Re-run GET /api/v1/products to confirm stock after the success case.
+          Provide OPTIONAL SQL commands to inspect stock and saved orders, with
+          clear working directory/context and actual table names. Explain that
+          live orders change demo data; do not silently reset it.
+      Distinguish expected outputs from checks actually performed. Do not claim
+      Swagger was used interactively unless it really was; if Claude only verified
+      via HTTP, mark the Swagger instructions as manual steps for the reader.
+   8. Frontend project structure and run — reserved for Prompt 3.
+   9. Frontend UI walkthrough and verification — reserved for Prompt 3.
+   10. Demo reset — stop backend; `docker compose down -v` and
+       `docker compose up -d --wait`; restart backend to reapply migrations.
+       Warn that this destroys all local orders and volume data.
+
+   Explain that MySQL's fresh-volume init script creates the test database,
+   while Flyway applies application migrations and seed data on startup.
+   Do not invent filenames, database columns or test results. Do not create a
+   separate test-report document or change docs/changes/.
+
+FINAL REPORT
+Briefly report design files, implementation, checks actually run
+(PASS/FAIL/NOT RUN), blockers and how to start the backend.
 ```
 
-Check the report (What was built, Checks run, Decisions, Commands): all tests pass, `docs/TEST_REPORT.md` lists them by business rule, and the six manual checks match their expected results. Then repeat the checks yourself in Swagger UI at http://localhost:8080/swagger-ui.html, using the "Test it yourself" section of your `README.md`.
+After Prompt 2, review the real `mvn verify` result, `docs/backend-design.md`, README project hierarchy and API tests. For manual checks, use the generated README's Swagger UI guide.
 
 ### Prompt 3 — Frontend
 
-Claude checks the real API against the blueprint, builds the React app in `frontend/` and updates `README.md`.
+Reads all existing documents, checks the live `/v3/api-docs` API contract, implements React and updates the README's frontend runbook and manual UI test.
 
 ```text
-Read docs/PROJECT_BLUEPRINT.md. The backend in backend/ is complete. Build the frontend. Before step 1, check that Docker is running and that Node.js and npm are installed; start Docker Desktop if needed and wait up to two minutes. Work through the steps below in order without stopping. Never pause to ask about decisions: when the blueprint does not settle something, choose the simplest option that fits, record it under Decisions and continue. Stop only for a blocker you cannot resolve yourself, and tell me what it is. After each step, print one status line in the form "[Step N/8] <step name>: <what was created or done> - <result of its check>".
+OBJECTIVE
+Read docs/requirements.md, docs/backend-design.md and README.md. Build the frontend
+for the three approved EcomStore features. Do not alter the backend API or add features.
 
-Where things go: the current folder is the project root. Create the React app in frontend/ at the project root, next to backend/. All frontend files and npm commands stay inside frontend/. Do not change backend/ unless a step below requires it, and tell me if you do.
+TECHNICAL CONSTRAINTS
+- React, TypeScript, Vite, Tailwind CSS, React Router and npm; place files in frontend/.
+- Backend: `http://localhost:8080`; frontend: `http://localhost:5173`.
+- Configure `VITE_API_BASE_URL` and provide `frontend/.env.example`.
+- Match the navy-and-amber visual requirements in docs/requirements.md.
 
-1. Start MySQL (docker compose up -d --wait, from the project root) if it is not running, then start the backend. Fetch http://localhost:8080/v3/api-docs and check that the endpoints and JSON shapes match blueprint section 5. If they differ, follow the real API and list the difference under Decisions.
-2. Create frontend/ with Vite's React + TypeScript template, using non-interactive flags. Add Tailwind CSS (current official Vite setup) and React Router.
-3. Build the API client, cart, components and pages from blueprint section 6, with the file names given there.
-4. Create frontend/.env.example and frontend/.env.local with VITE_API_BASE_URL=http://localhost:8080.
-5. Make the type check, lint and production build pass.
-6. Start the frontend dev server and confirm http://localhost:5173 can call the API (CORS). You cannot click through a browser, so do not claim you did.
-7. Documentation: update README.md as described in blueprint section 11, now including the frontend.
-8. Stop the frontend and the backend, and leave MySQL running.
+API INTEGRATION
+1. Start MySQL with `docker compose up -d --wait` from project root and start
+   the backend with `mvn spring-boot:run` from backend/ if needed.
+2. Fetch `http://localhost:8080/v3/api-docs`; check it against
+   docs/backend-design.md. If unavailable or inconsistent, report and stop.
+   Use the actual verified request and response fields.
 
-Final report, under exactly these headings:
-- What was built: one line per step.
-- Checks run: every check you actually ran, with its real result: type check, lint, production build, dev server and CORS.
-- Decisions: anything the blueprint did not settle and how you resolved it, or "None".
-- Commands: how to start MySQL, the backend and the frontend.
-- Browser checklist: browse, search, category filter, add to cart, cart limit, checkout, order page, cancel, track an order, and an insufficient-stock attempt.
+FRONTEND DESIGN
+3. IMPORTANT — DOCUMENT DECISIONS: Create docs/frontend-design.md starting with
+   Constraints (frameworks, ports, environment variable, visual style). Describe
+   actual routes, pages/components, cart state, API client, validation, error
+   handling and responsive design. Keep the component structure small.
+
+FEATURE IMPLEMENTATION
+4. Catalog — product cards, search, category pills, loading/empty/error states.
+   Follow exact stock badge labels and disable Add to Cart when stock is zero.
+5. Cart — add/remove items, edit positive integer quantities, show subtotals
+   and totals, persist in localStorage. Do not cap cart quantities at stock.
+6. Checkout — customer form, POST to the verified API, inline validation and
+   clear stock-shortage details. Show confirmation from the successful response
+   and clear the cart only after success; no order lookup is required.
+
+FRONTEND VERIFICATION
+7. Install packages, run the project's type-check command if defined, and run
+   `npm run build` (lint if configured). Start Vite and verify its server
+   responds and backend CORS accepts `http://localhost:5173`. Stop Vite afterward.
+   Do not claim browser interactions were tested unless actually performed.
+8. Update docs/frontend-design.md to match what was built; report deviations.
+
+README DOCUMENTATION
+9. IMPORTANT — REPRODUCIBLE FRONTEND DEMO: Preserve README sections 1–7 and 10,
+   and the unnumbered goal/status. Update the frontend status, then fill sections:
+   8. Frontend project structure and run — replace README section 3's partial
+      backend tree with ONE complete file-and-folder hierarchy for the project,
+      covering backend AND frontend, along with docs, Docker Compose and README.
+      Use a fenced `text` tree, with concise inline `#` comments for the important
+      folders and actual files: frontend entry point, pages/components, API client,
+      cart persistence/state, styling, environment template, package configuration,
+      plus key backend files, tests and migrations. Show only files that exist,
+      and avoid generated directories (node_modules, dist, target). Do not repeat
+      a large path table. In this section, explain how to configure and launch
+      the frontend: working directory `frontend/`, `npm install`, available
+      type-check command, `npm run build`, `npm run dev`, Ctrl+C, browser URL,
+      API base URL/environment configuration, and backend/CORS prerequisites.
+      Refer to the combined tree in section 3 instead of duplicating it.
+   9. Frontend UI walkthrough and verification — provide a simple numbered,
+      browser-based user journey rather than calling it a generic walkthrough.
+      Explain what to click, what should appear and how to check each result:
+      (a) open the UI and check that all six products load;
+      (b) search Espresso and choose Home & Kitchen, then clear filters;
+      (c) add Wireless Headphones, open cart, set quantity to 2, confirm 259.98;
+      (d) refresh and confirm cart persists;
+      (e) complete checkout with valid customer details, inspect confirmation,
+          verify stock 10 -> 8 on a fresh seeded database and cleared cart;
+      (f) attempt checkout with 4 Espresso Machines (3 in stock), inspect the
+          requested/available error and confirm the cart remains unchanged.
+      Label this section a MANUAL UI TEST; do not claim Claude performed browser
+      clicks unless it actually did. State the confirmation comes from the POST
+      response and is not an order-history or refresh-persistent page.
+
+   State that the confirmation relies on the POST response and does not survive
+   a refresh. Don't list generated build output or duplicate the full design file.
+
+GUARDRAILS
+Follow every behavior in docs/requirements.md, including stock badge text,
+stock-zero button behavior and excluded features. Do not introduce accounts,
+payments, tracking, cancellation or an additional product-detail page.
+
+FINAL REPORT
+Briefly report design files, implementation, checks actually run
+(PASS/FAIL/NOT RUN), blockers and how to start the frontend.
 ```
 
-Check that the type check, lint and production build pass and CORS is confirmed. Then work through the browser checklist from the report yourself at http://localhost:5173.
+After Prompt 3, compare typecheck/build output and the README's documented results. The browser walkthrough is a **manual test**, unless Claude explicitly reports performing it.
 
-## Run the Store
+## Run and verify EcomStore
 
-From the `ecomstore` folder, start MySQL:
+**The README generated inside your own EcomStore project is the primary runbook.** It contains the actual project tree, test results, configuration, and detailed Swagger/UI test steps. Use its Sections 2, 7, 8 and 9 during the demonstration rather than memorizing commands.
 
-```text
-docker compose up -d --wait
-```
+1. **MySQL — from the project root:** first check whether it is already running. Only start if required.
 
-Start the backend (Swagger UI: http://localhost:8080/swagger-ui.html):
+   ```powershell
+   docker compose ps
+   docker compose up -d --wait
+   ```
 
-```powershell
-cd backend
-.\mvnw.cmd spring-boot:run
-```
+2. **Backend — from `backend/`:** if `http://localhost:8080/v3/api-docs` doesn't respond, start Spring Boot (with JDK 25 active).
 
-On macOS/Linux, use `./mvnw spring-boot:run`.
+   ```powershell
+   mvn spring-boot:run
+   ```
 
-In a second terminal, start the frontend (http://localhost:5173):
+   Swagger UI: <http://localhost:8080/swagger-ui/index.html>.
 
-```text
-cd frontend
-npm install
-npm run dev
-```
+3. **Frontend — from `frontend/` in another terminal:** start it only if not already running.
 
-Your project's own `README.md` has the full run and test steps.
+   ```powershell
+   npm install
+   npm run dev
+   ```
 
-## Troubleshooting
+   `npm install` is needed only if dependencies are missing. Visit <http://localhost:5173>.
 
-| Problem | Fix |
-|---|---|
-| Claude stops because Docker isn't running | Start Docker Desktop, wait for "Engine running", then tell Claude to continue. |
-| Flyway errors, or old data from an earlier attempt | In the old project folder, run `docker compose down -v`, then start again in a new folder. |
-| Maven uses the wrong Java version | Set `JAVA_HOME` to JDK 25 and restart IntelliJ IDEA. |
-| "Project JDK is not defined" in IntelliJ | File → Project Structure → Project → SDK 25. |
-| A port is already in use | Stop whatever uses 3306, 8080 or 5173, for example a local MySQL. |
+4. **Browser verification — follow generated README Section 9:** six products; search `Espresso` and filter Home & Kitchen; add two Wireless Headphones ($259.98); refresh to demonstrate cart persistence; place an order, check confirmation and stock decrement; request four Espresso Machines with only three in stock and verify the shortage error and unchanged cart.
 
-## Finished Code
+## Demo preparation notes
 
-The project built in this lesson lives in its own repository, **[ecomstore-spring-boot-react](https://github.com/j2eeexpert2015/ecomstore-spring-boot-react)**. The tag [`video-1-full-stack-app`](https://github.com/j2eeexpert2015/ecomstore-spring-boot-react/tree/video-1-full-stack-app) marks the code exactly as it is at the end of this lesson.
-
-Build your own with the prompts first. Claude's output can differ in small details from run to run, so use the repository to compare, or to run the finished store directly:
-
-```text
-git clone --branch video-1-full-stack-app https://github.com/j2eeexpert2015/ecomstore-spring-boot-react.git
-cd ecomstore-spring-boot-react
-docker compose up -d --wait
-```
-
-Then follow "Run it" in that repository's `README.md`.
+- **Browser cart data** is stored in localStorage and is independent of the Docker database. A previously used browser may show saved cart items, even after app restart.
+- A live backend test may already have reduced Wireless Headphones stock **10 → 8**. If you need the original starting stock for recording, follow the generated README's **Demo reset** steps, but be aware that `docker compose down -v` **deletes the entire local MySQL data volume**, including any saved orders.
+- `mvn verify` does not keep a backend server running. Claude may also stop Vite after testing. Check each service before starting another instance.
+- This requirements-first, six-product demonstration is **different from the repository's older blueprint-based EcomStore**, which included payments, tracking and cancellation. Do not treat an older finished-code snapshot as equivalent to these prompts.
