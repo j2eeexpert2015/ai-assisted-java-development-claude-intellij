@@ -8,19 +8,23 @@ Browse the lessons below. For published videos, click a thumbnail to watch on Yo
 
 ### 1. Install and Set Up Claude Code
 
-[![Watch: Claude Code installation and setup](https://img.youtube.com/vi/FqbfPAPKMKk/hqdefault.jpg)](https://www.youtube.com/watch?v=FqbfPAPKMKk)
+<a href="https://www.youtube.com/watch?v=FqbfPAPKMKk" target="_blank" rel="noopener noreferrer">
+  <img src="https://img.youtube.com/vi/FqbfPAPKMKk/hqdefault.jpg" alt="Watch: Claude Code installation and setup">
+</a>
 
-[**Watch on YouTube**](https://www.youtube.com/watch?v=FqbfPAPKMKk)
+<a href="https://www.youtube.com/watch?v=FqbfPAPKMKk" target="_blank" rel="noopener noreferrer"><strong>Watch on YouTube</strong></a>
 
 Get started by installing and setting up Claude Code before using it for Java development.
 
 ### 2. Claude Code with IntelliJ IDEA — Your First Java Project
 
-[![Watch: Claude Code with IntelliJ IDEA](https://img.youtube.com/vi/9Pg1ihh6yhk/hqdefault.jpg)](https://www.youtube.com/watch?v=9Pg1ihh6yhk)
+<a href="https://www.youtube.com/watch?v=9Pg1ihh6yhk" target="_blank" rel="noopener noreferrer">
+  <img src="https://img.youtube.com/vi/9Pg1ihh6yhk/hqdefault.jpg" alt="Watch: Claude Code with IntelliJ IDEA">
+</a>
 
-[**Watch on YouTube**](https://www.youtube.com/watch?v=9Pg1ihh6yhk)
+<a href="https://www.youtube.com/watch?v=9Pg1ihh6yhk" target="_blank" rel="noopener noreferrer"><strong>Watch on YouTube</strong></a>
 
-[**Lesson Overview & Prompts**](lessons/claude-code-intellij-java-getting-started/README.md)
+<a href="lessons/claude-code-intellij-java-getting-started/README.md" target="_blank" rel="noopener noreferrer"><strong>Lesson Overview & Prompts</strong></a>
 
 Connect Claude Code with IntelliJ IDEA and use it in a practical Java project.
 
@@ -28,7 +32,7 @@ Connect Claude Code with IntelliJ IDEA and use it in a practical Java project.
 
 **YouTube tutorial: Coming soon**
 
-[**Lesson Overview & Prompts**](lessons/full-stack-spring-boot-react-app/README.md)
+<a href="lessons/full-stack-spring-boot-react-app/README.md" target="_blank" rel="noopener noreferrer"><strong>Lesson Overview & Prompts</strong></a>
 
 Build EcomStore using functional requirements, Spring Boot with MySQL and Flyway, and a React frontend. The lesson covers product catalog, cart, and checkout.
 
@@ -36,7 +40,7 @@ Build EcomStore using functional requirements, Spring Boot with MySQL and Flyway
 
 **YouTube tutorial: Coming soon**
 
-[**Lesson Overview & Prompts**](lessons/full-stack-spring-boot-angular-app/README.md)
+<a href="lessons/full-stack-spring-boot-angular-app/README.md" target="_blank" rel="noopener noreferrer"><strong>Lesson Overview & Prompts</strong></a>
 
 Build eShop with Java 25, Spring Boot, MySQL and Angular, following a requirements-first, three-prompt workflow.
 
@@ -46,4 +50,4 @@ Build eShop with Java 25, Spring Boot, MySQL and Angular, following a requiremen
 
 The **Lesson Overview & Prompts** links open each lesson’s supporting README with prerequisites and practical instructions. The React and Angular full-stack lesson READMEs each contain all **three complete prompts** in one file—no separate prompt files required.
 
-[Browse the lessons folder](lessons/)
+<a href="lessons/" target="_blank" rel="noopener noreferrer">Browse the lessons folder</a>
