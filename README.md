@@ -43,11 +43,3 @@ Build EcomStore using functional requirements, Spring Boot with MySQL and Flyway
 <a href="lessons/full-stack-spring-boot-angular-app/README.md" target="_blank" rel="noopener noreferrer"><strong>Lesson Overview & Prompts</strong></a>
 
 Build eShop with Java 25, Spring Boot, MySQL and Angular, following a requirements-first, three-prompt workflow.
-
----
-
-## About the lesson resources
-
-The **Lesson Overview & Prompts** links open each lesson’s supporting README with prerequisites and practical instructions. The React and Angular full-stack lesson READMEs each contain all **three complete prompts** in one file—no separate prompt files required.
-
-<a href="lessons/" target="_blank" rel="noopener noreferrer">Browse the lessons folder</a>
