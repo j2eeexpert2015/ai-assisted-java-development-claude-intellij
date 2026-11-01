@@ -1,50 +1,39 @@
 # Build a Full-Stack Spring Boot + Angular App with Claude Code in IntelliJ IDEA
 
-Follow the **eShop** lesson using three sequential Claude Code prompts: **requirements**, **Spring Boot backend**, and **Angular frontend**. The application supports a product catalog, shopping cart and checkout with order confirmation, using six sample products across three categories. Accounts, payments and order tracking are outside the lesson scope.
+Follow the **eShop** demonstration using three copy-ready Claude Code prompts: functional requirements, Spring Boot backend, and Angular frontend. The application includes a **product catalog, shopping cart, and checkout/order confirmation**, with six sample products across three categories. Payments, accounts, order tracking, and cancellation are out of scope.
 
-**Technology:** Java 25, Spring Boot 4 (retain the version selected when creating the starter), system Maven, MySQL 8.4 with Docker Compose, Flyway, Swagger/OpenAPI, Angular, TypeScript and component-scoped SCSS.
-
-**Three complete, copy-ready prompts are included below**, following the same single-README format as the EcomStore React lesson. Submit each prompt in order, and review the generated files before moving to the next.
+**Stack:** Java 25, Spring Boot 4 (retain the version in `backend/pom.xml`), system Maven, MySQL 8.4 in Docker, Flyway, Swagger/OpenAPI, Angular, TypeScript, and SCSS.
 
 ## Contents
 
 - [Prerequisites](#prerequisites)
-- [Prepare the project in IntelliJ IDEA](#prepare-the-project-in-intellij-idea)
+- [Create the project in IntelliJ IDEA](#create-the-project-in-intellij-idea)
 - [Three development prompts](#three-development-prompts)
   - [Prompt 1 — Functional requirements](#prompt-1--functional-requirements)
   - [Prompt 2 — Spring Boot backend](#prompt-2--spring-boot-backend)
   - [Prompt 3 — Angular frontend](#prompt-3--angular-frontend)
-- [Review the generated outputs](#review-the-generated-outputs)
 - [Run and verify eShop](#run-and-verify-eshop)
-- [Recording and data notes](#recording-and-data-notes)
+- [Demo preparation notes](#demo-preparation-notes)
 
 ## Prerequisites
 
-Install IntelliJ IDEA, **JDK 25**, **system Maven**, **Node.js and npm**, Docker Desktop with Compose, and Claude Code CLI. Check your installations in the project terminal:
+- JDK 25 configured in IntelliJ IDEA and for command-line Maven (`java -version`, `mvn -version`).
+- Claude Code CLI and IntelliJ IDEA (`claude --version`).
+- **System Maven**, not Maven Wrapper.
+- Docker Desktop with Compose, Node.js and npm (`docker compose version`, `node -v`, `npm -v`).
+- Local ports **3306**, **8080**, and **4200** available.
 
-```text
-java -version
-mvn -version
-node -v
-npm -v
-docker compose version
-claude --version
-```
+## Create the project in IntelliJ IDEA
 
-Use JDK 25 for both IntelliJ and Maven. If your terminal defaults to another JDK, correct `JAVA_HOME` before building. The local application uses ports **3306** (MySQL), **8080** (Spring Boot) and **4200** (Angular).
-
-## Prepare the project in IntelliJ IDEA
-
-1. Select **File → New → Project → Empty Project** and name it `eshop`.
-2. Set **Project SDK** to JDK 25.
-3. Within that project, select **File → New → Module → Spring Boot**. Create `backend/` with Java 25, Maven, JAR packaging, group `org.learningfromexperience`, artifact `eshop` and base package `org.learningfromexperience.eshop`. Select **Spring Web** as the initial dependency, retaining the Spring Boot version chosen in the wizard.
-4. Confirm the project contains `backend/pom.xml`. Claude will **extend this existing module**, not create a replacement Spring Boot project.
-5. Start Claude Code from the **`eshop/` project root**. Before Prompt 1, review the actual **Sonnet model and effort setting** shown in your installed Claude Code version, and select the intended setting for the demonstration.
-6. Submit the three prompts **one at a time**, reviewing the results and generated files between prompts.
+1. **File → New → Project → Empty Project**; name it `eshop`.
+2. Set the Project SDK to **JDK 25**.
+3. **File → New → Module → Spring Boot**; create `backend/` inside the project. Use Java 25, Maven, JAR, group `org.learningfromexperience`, artifact `eshop`, package `org.learningfromexperience.eshop`, the selected stable Spring Boot 4 version, and **Spring Web** only.
+4. Confirm `backend/pom.xml` exists. Claude must extend this module rather than create a second Spring Boot project.
+5. Open a terminal at the **`eshop/` project root**, start Claude Code using `claude`, and review the selected **Sonnet model and effort setting**. Submit the prompts in order, reviewing the results after each.
 
 ## Three development prompts
 
-The three complete prompt blocks below are taken from the finalized **eShop (Spring Boot + Angular) — Three Claude Code Prompts** document. Copy the **entire fenced prompt** and submit it to Claude Code from the `eshop/` project root. Each stage depends on the documents and code created in the preceding stage.
+Copy each complete prompt into Claude Code from the project root. Prompt 2 uses the documentation from Prompt 1; Prompt 3 uses the requirements, backend design, and live API contract.
 
 ### Prompt 1 — Functional requirements
 
@@ -193,36 +182,17 @@ Briefly list created files, Angular implementation/checks actually run, blockers
 
 **After Prompt 3:** Review `docs/frontend-design.md`; expand `frontend/` to inspect components, services, routing, templates, SCSS and tests. Check the actual typecheck, test and build results; browser interaction remains a separate manual verification.
 
-## Review the generated outputs
-
-The **`README.md` at the root of the generated `eshop/` application** is a separate document from this lesson README. Claude updates that application README as development progresses; it records the actual project tree, database schema, commands, test evidence, Swagger/API instructions and manual browser walkthrough.
-
-The generated application's documentation should include:
-
-- `docs/requirements.md` — functional specification.
-- `docs/backend-design.md` — backend decisions and transaction/stock strategy.
-- `docs/frontend-design.md` — Angular architecture, state management and API integration.
-- `README.md` — the generated application's reproducible runbook and observed verification results.
-
 ## Run and verify eShop
 
-Follow the **generated application's README** for the authoritative, complete, environment-specific instructions. A typical order of operations is:
+The **generated application's `README.md`** contains the actual project tree, database schema, Flyway migrations, test results, Swagger examples, and frontend walkthrough. Follow its instructions for your generated environment.
 
-1. **Database:** From the `eshop/` root, check or start MySQL with Docker Compose; verify that the service is healthy.
-2. **Backend tests:** From `eshop/backend/`, with JDK 25 active, run `mvn verify` and inspect the results.
-3. **Backend:** From `eshop/backend/`, run `mvn spring-boot:run` and inspect the API in [Swagger UI](http://localhost:8080/swagger-ui/index.html).
-4. **Angular:** From `eshop/frontend/`, run `npm install` (when needed) and `npm start`. Open [http://localhost:4200](http://localhost:4200).
-5. **Browser:** Verify catalog search/filter, adding products, adjusting and retaining cart quantities, checkout validation, successful order confirmation and the insufficient-stock error. Confirm that failed checkout retains the cart, and that the cart clears only after successful checkout.
+1. From the project root, start or check MySQL: `docker compose up -d --wait` and `docker compose ps`.
+2. In `backend/`, use JDK 25 and run `mvn verify` to execute the backend tests.
+3. In `backend/`, run `mvn spring-boot:run`; open [Swagger UI](http://localhost:8080/swagger-ui/index.html) to inspect the categories, products, and order APIs.
+4. In `frontend/`, run `npm install` and `npm start`; open [eShop](http://localhost:4200).
+5. Follow the application README's manual UI walkthrough: search/filter products; add and update cart items; refresh to check persistence; submit an order; and test insufficient stock. The browser walkthrough is a separate manual check, not implied by successful automated tests.
 
-These are **instructions for the reader**, not claims that this README ran those commands. The demo database may already contain orders or changed stock after backend HTTP verification, so use actual stock quantities when recording.
+## Demo preparation notes
 
-## Recording and data notes
-
-- The original seed catalog contains six products. A successful order changes database stock; don't assume seed quantities are still current.
-- A clean demo reset may delete locally saved orders and volumes. Only use the reset procedure described in the generated application README when that data can safely be discarded.
-- Keep the actual Claude model/effort setting, Java/Maven version and test output visible where they matter; do not substitute hypothetical results.
-- The Angular checkout confirmation is shown in the checkout flow, not necessarily a separate confirmation route.
-
----
-
-**Repository placement:** Save this single file as `lessons/full-stack-spring-boot-angular-app/README.md`. No additional prompt files are required.
+- HTTP order tests can change product stock. Check current quantities before demonstrating checkout; do not assume the original seed data is unchanged.
+- Resetting Docker volumes deletes stored demo orders. Use the application README's reset procedure only when existing data can be discarded.
