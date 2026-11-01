@@ -2,7 +2,7 @@
 
 Practical tutorials on **Claude Code, IntelliJ IDEA, Java, Spring Boot, Maven, and AI-assisted development**.
 
-Browse the lessons below. For published videos, click a thumbnail to watch on YouTube. Each full-stack lesson also has a README containing its three complete, copy-ready prompts.
+Browse the lessons below. For published videos, click a thumbnail to watch on YouTube. For each lesson, open **Lesson Overview & Prompts** to find the written setup guidance and copy-ready prompts.
 
 ## Video tutorials and lesson resources
 
@@ -18,7 +18,9 @@ Get started by installing and setting up Claude Code before using it for Java de
 
 [![Watch: Claude Code with IntelliJ IDEA](https://img.youtube.com/vi/9Pg1ihh6yhk/hqdefault.jpg)](https://www.youtube.com/watch?v=9Pg1ihh6yhk)
 
-[**Watch on YouTube**](https://www.youtube.com/watch?v=9Pg1ihh6yhk) · [**Lesson README — setup and Java Calculator prompts**](lessons/claude-code-intellij-java-getting-started/README.md)
+[**Watch on YouTube**](https://www.youtube.com/watch?v=9Pg1ihh6yhk)
+
+[**Lesson Overview & Prompts**](lessons/claude-code-intellij-java-getting-started/README.md)
 
 Connect Claude Code with IntelliJ IDEA and use it in a practical Java project.
 
@@ -26,7 +28,7 @@ Connect Claude Code with IntelliJ IDEA and use it in a practical Java project.
 
 **YouTube tutorial: Coming soon**
 
-[**Lesson README — all three prompts and resources**](lessons/full-stack-spring-boot-react-app/README.md)
+[**Lesson Overview & Prompts**](lessons/full-stack-spring-boot-react-app/README.md)
 
 Build EcomStore using functional requirements, Spring Boot with MySQL and Flyway, and a React frontend. The lesson covers product catalog, cart, and checkout.
 
@@ -34,7 +36,7 @@ Build EcomStore using functional requirements, Spring Boot with MySQL and Flyway
 
 **YouTube tutorial: Coming soon**
 
-[**Lesson README — all three prompts and resources**](lessons/full-stack-spring-boot-angular-app/README.md)
+[**Lesson Overview & Prompts**](lessons/full-stack-spring-boot-angular-app/README.md)
 
 Build eShop with Java 25, Spring Boot, MySQL and Angular, following a requirements-first, three-prompt workflow.
 
@@ -42,6 +44,6 @@ Build eShop with Java 25, Spring Boot, MySQL and Angular, following a requiremen
 
 ## About the lesson resources
 
-Each lesson README contains its prerequisites and practical instructions. The React and Angular full-stack lesson READMEs each contain all **three complete prompts** in one file—no separate prompt files required.
+The **Lesson Overview & Prompts** links open each lesson’s supporting README with prerequisites and practical instructions. The React and Angular full-stack lesson READMEs each contain all **three complete prompts** in one file—no separate prompt files required.
 
 [Browse the lessons folder](lessons/)
