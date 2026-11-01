@@ -4,6 +4,14 @@ Practical tutorials on **Claude Code, IntelliJ IDEA, Java, Spring Boot, Maven, a
 
 Browse the lessons below. For published videos, click a thumbnail to watch on YouTube. For each lesson, open **Lesson Overview & Prompts** to find the written setup guidance and copy-ready prompts.
 
+## Contents
+
+- [Claude Code installation and setup](#1-install-and-set-up-claude-code)
+- [Claude Code with IntelliJ IDEA — First Java Project](#2-claude-code-with-intellij-idea--your-first-java-project)
+- [Spring Boot + React — EcomStore](#3-build-a-full-stack-spring-boot--react-app-with-claude-code--ecomstore)
+- [Spring Boot + Angular — eShop](#4-build-a-full-stack-spring-boot--angular-app-with-claude-code--eshop)
+- [About the lesson resources](#about-the-lesson-resources)
+
 ## Video tutorials and lesson resources
 
 ### 1. Install and Set Up Claude Code
@@ -43,3 +51,4 @@ Build EcomStore using functional requirements, Spring Boot with MySQL and Flyway
 <a href="lessons/full-stack-spring-boot-angular-app/README.md" target="_blank" rel="noopener noreferrer"><strong>Lesson Overview & Prompts</strong></a>
 
 Build eShop with Java 25, Spring Boot, MySQL and Angular, following a requirements-first, three-prompt workflow.
+
