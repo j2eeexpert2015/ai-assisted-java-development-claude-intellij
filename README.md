@@ -1,8 +1,47 @@
 # AI-Assisted Java Development
 
-Companion resources for practical lessons on **Claude Code, IntelliJ IDEA, Java, Spring Boot, Maven, Git, and AI-assisted development**.
+Practical tutorials on **Claude Code, IntelliJ IDEA, Java, Spring Boot, Maven, and AI-assisted development**.
 
-## Lessons
+Browse the lessons below. For published videos, click a thumbnail to watch on YouTube. Each full-stack lesson also has a README containing its three complete, copy-ready prompts.
 
-- **[Claude Code with IntelliJ IDEA: Setup & Your First Java Project](lessons/claude-code-intellij-java-getting-started/README.md)** — Installation commands, configuration steps, and copy-ready prompts for the Java Calculator demonstration.
-- **[Build a Full-Stack Spring Boot + React App with Claude Code in IntelliJ IDEA](lessons/full-stack-spring-boot-react-app/README.md)** — Three copy-ready, requirements-first prompts for EcomStore: functional requirements, Spring Boot backend with MySQL/Flyway/API tests, and React frontend with manual browser verification. Six sample products; Catalog, Cart and Checkout.
+## Video tutorials and lesson resources
+
+### 1. Install and Set Up Claude Code
+
+[![Watch: Claude Code installation and setup](https://img.youtube.com/vi/FqbfPAPKMKk/hqdefault.jpg)](https://www.youtube.com/watch?v=FqbfPAPKMKk)
+
+[**Watch on YouTube**](https://www.youtube.com/watch?v=FqbfPAPKMKk)
+
+Get started by installing and setting up Claude Code before using it for Java development.
+
+### 2. Claude Code with IntelliJ IDEA — Your First Java Project
+
+[![Watch: Claude Code with IntelliJ IDEA](https://img.youtube.com/vi/9Pg1ihh6yhk/hqdefault.jpg)](https://www.youtube.com/watch?v=9Pg1ihh6yhk)
+
+[**Watch on YouTube**](https://www.youtube.com/watch?v=9Pg1ihh6yhk) · [**Lesson README — setup and Java Calculator prompts**](lessons/claude-code-intellij-java-getting-started/README.md)
+
+Connect Claude Code with IntelliJ IDEA and use it in a practical Java project.
+
+### 3. Build a Full-Stack Spring Boot + React App with Claude Code — EcomStore
+
+**YouTube tutorial: Coming soon**
+
+[**Lesson README — all three prompts and resources**](lessons/full-stack-spring-boot-react-app/README.md)
+
+Build EcomStore using functional requirements, Spring Boot with MySQL and Flyway, and a React frontend. The lesson covers product catalog, cart, and checkout.
+
+### 4. Build a Full-Stack Spring Boot + Angular App with Claude Code — eShop
+
+**YouTube tutorial: Coming soon**
+
+[**Lesson README — all three prompts and resources**](lessons/full-stack-spring-boot-angular-app/README.md)
+
+Build eShop with Java 25, Spring Boot, MySQL and Angular, following a requirements-first, three-prompt workflow.
+
+---
+
+## About the lesson resources
+
+Each lesson README contains its prerequisites and practical instructions. The React and Angular full-stack lesson READMEs each contain all **three complete prompts** in one file—no separate prompt files required.
+
+[Browse the lessons folder](lessons/)
