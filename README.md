@@ -10,6 +10,7 @@ Browse the lessons below. For published videos, click a thumbnail to watch on Yo
 - [Claude Code with IntelliJ IDEA — First Java Project](#2-claude-code-with-intellij-idea--your-first-java-project)
 - [Spring Boot + React — EcomStore](#3-build-a-full-stack-spring-boot--react-app-with-claude-code--ecomstore)
 - [Spring Boot + Angular — eShop](#4-build-a-full-stack-spring-boot--angular-app-with-claude-code--eshop)
+- [About the lesson resources](#about-the-lesson-resources)
 
 ## Video tutorials and lesson resources
 
@@ -37,9 +38,15 @@ Connect Claude Code with IntelliJ IDEA and use it in a practical Java project.
 
 ### 3. Build a Full-Stack Spring Boot + React App with Claude Code — EcomStore
 
-**YouTube tutorial: Coming soon**
+<a href="https://www.youtube.com/watch?v=y_bmrvzalRU" target="_blank" rel="noopener noreferrer">
+  <img src="https://img.youtube.com/vi/y_bmrvzalRU/hqdefault.jpg" alt="Watch: Spring Boot + React EcomStore tutorial">
+</a>
+
+<a href="https://www.youtube.com/watch?v=y_bmrvzalRU" target="_blank" rel="noopener noreferrer"><strong>Watch on YouTube</strong></a>
 
 <a href="lessons/full-stack-spring-boot-react-app/README.md" target="_blank" rel="noopener noreferrer"><strong>Lesson Overview & Prompts</strong></a>
+
+*Video currently private; available when it premieres.*
 
 Build EcomStore using functional requirements, Spring Boot with MySQL and Flyway, and a React frontend. The lesson covers product catalog, cart, and checkout.
 
