@@ -1,4 +1,4 @@
-# AI-Assisted Java Development
+# AI-Assisted Java Development with Claude Code and IntelliJ IDEA
 
 Practical tutorials on **Claude Code, IntelliJ IDEA, Java, Spring Boot, Maven, and AI-assisted development**.
 
@@ -46,12 +46,11 @@ Build a small full-stack e-commerce application using three detailed prompts: fu
 
 ### 4. Build a Full-Stack Spring Boot + Angular App with Claude Code — eShop
 
-**YouTube tutorial: Coming soon**
+<a href="https://www.youtube.com/watch?v=E4NhUzn6Lyc" target="_blank" rel="noopener noreferrer">
+  <img src="https://img.youtube.com/vi/E4NhUzn6Lyc/hqdefault.jpg" alt="YouTube thumbnail: Spring Boot + Angular eShop tutorial">
+</a>
 
-[Lesson Overview & Prompts](lessons/full-stack-spring-boot-angular-app/README.md)
+[Watch on YouTube](https://www.youtube.com/watch?v=E4NhUzn6Lyc) · [Lesson Overview & Three Prompts](lessons/full-stack-spring-boot-angular-app/README.md) · [eShop Source Code](https://github.com/j2eeexpert2015/eshop)
 
 Build eShop with Java 25, Spring Boot, MySQL, and Angular using a requirements-first, three-prompt workflow.
 
-## About the lesson resources
-
-Each lesson's resource page provides the setup details and prompts relevant to that tutorial. The EcomStore lesson also links to the complete generated application source code. The video thumbnails above are loaded from YouTube using the video IDs linked for each lesson.
