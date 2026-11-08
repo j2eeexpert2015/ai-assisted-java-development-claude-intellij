@@ -1,5 +1,7 @@
 # Build a Full-Stack Spring Boot + Angular App with Claude Code in IntelliJ IDEA
 
+**Video tutorial:** [Watch on YouTube](https://www.youtube.com/watch?v=E4NhUzn6Lyc)
+
 Follow the **eShop** demonstration using three copy-ready Claude Code prompts: functional requirements, Spring Boot backend, and Angular frontend. The application includes a **product catalog, shopping cart, and checkout/order confirmation**, with six sample products across three categories. Payments, accounts, order tracking, and cancellation are out of scope.
 
 **Stack:** Java 25, Spring Boot 4 (retain the version in `backend/pom.xml`), system Maven, MySQL 8.4 in Docker, Flyway, Swagger/OpenAPI, Angular, TypeScript, and SCSS.

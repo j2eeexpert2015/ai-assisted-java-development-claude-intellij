@@ -1,8 +1,8 @@
-# AI-Assisted Java Development
+# AI-Assisted Java Development with Claude Code and IntelliJ IDEA
 
 Practical tutorials on **Claude Code, IntelliJ IDEA, Java, Spring Boot, Maven, and AI-assisted development**.
 
-Browse the lessons below. For published videos, click a thumbnail to watch on YouTube. For each lesson, open **Lesson Overview & Prompts** to find the written setup guidance and copy-ready prompts.
+Browse the lessons below. Click a video thumbnail to watch the corresponding tutorial on YouTube. Open **Lesson Overview & Prompts** for setup guidance and copy-ready prompts when available.
 
 ## Contents
 
@@ -16,45 +16,41 @@ Browse the lessons below. For published videos, click a thumbnail to watch on Yo
 
 ### 1. Install and Set Up Claude Code
 
-<a href="https://www.youtube.com/watch?v=FqbfPAPKMKk" target="_blank" rel="noopener noreferrer">
-  <img src="https://img.youtube.com/vi/FqbfPAPKMKk/hqdefault.jpg" alt="Watch: Claude Code installation and setup">
+<a href="https://www.youtube.com/watch?v=9Pg1ihh6yhk" target="_blank" rel="noopener noreferrer">
+  <img src="https://img.youtube.com/vi/9Pg1ihh6yhk/hqdefault.jpg" alt="YouTube thumbnail: Install and Set Up Claude Code">
 </a>
 
-<a href="https://www.youtube.com/watch?v=FqbfPAPKMKk" target="_blank" rel="noopener noreferrer"><strong>Watch on YouTube</strong></a>
+[Watch on YouTube](https://www.youtube.com/watch?v=9Pg1ihh6yhk)
 
-Get started by installing and setting up Claude Code before using it for Java development.
+Install Claude Code on Windows, sign in, verify the setup, and explore basic CLI commands before using it with Java projects.
 
 ### 2. Claude Code with IntelliJ IDEA — Your First Java Project
 
-<a href="https://www.youtube.com/watch?v=9Pg1ihh6yhk" target="_blank" rel="noopener noreferrer">
-  <img src="https://img.youtube.com/vi/9Pg1ihh6yhk/hqdefault.jpg" alt="Watch: Claude Code with IntelliJ IDEA">
+<a href="https://www.youtube.com/watch?v=FqbfPAPKMKk" target="_blank" rel="noopener noreferrer">
+  <img src="https://img.youtube.com/vi/FqbfPAPKMKk/hqdefault.jpg" alt="YouTube thumbnail: Claude Code with IntelliJ IDEA — First Java Project">
 </a>
 
-<a href="https://www.youtube.com/watch?v=9Pg1ihh6yhk" target="_blank" rel="noopener noreferrer"><strong>Watch on YouTube</strong></a>
+[Watch on YouTube](https://www.youtube.com/watch?v=FqbfPAPKMKk) · [Lesson Overview & Prompts](lessons/claude-code-intellij-java-getting-started/README.md)
 
-<a href="lessons/claude-code-intellij-java-getting-started/README.md" target="_blank" rel="noopener noreferrer"><strong>Lesson Overview & Prompts</strong></a>
-
-Connect Claude Code with IntelliJ IDEA and use it in a practical Java project.
+Connect Claude Code with IntelliJ IDEA and follow a practical Java Maven project demonstration.
 
 ### 3. Build a Full-Stack Spring Boot + React App with Claude Code — EcomStore
 
 <a href="https://www.youtube.com/watch?v=y_bmrvzalRU" target="_blank" rel="noopener noreferrer">
-  <img src="https://img.youtube.com/vi/y_bmrvzalRU/hqdefault.jpg" alt="Watch: Spring Boot + React EcomStore tutorial">
+  <img src="https://img.youtube.com/vi/y_bmrvzalRU/hqdefault.jpg" alt="YouTube thumbnail: Spring Boot + React EcomStore tutorial">
 </a>
 
-<a href="https://www.youtube.com/watch?v=y_bmrvzalRU" target="_blank" rel="noopener noreferrer"><strong>Watch on YouTube</strong></a>
+[Watch on YouTube](https://www.youtube.com/watch?v=y_bmrvzalRU) · [Lesson Overview & Three Prompts](lessons/full-stack-spring-boot-react-app/README.md) · [EcomStore Source Code](https://github.com/j2eeexpert2015/ecomstore)
 
-<a href="lessons/full-stack-spring-boot-react-app/README.md" target="_blank" rel="noopener noreferrer"><strong>Lesson Overview & Prompts</strong></a>
-
-*Video currently private; available when it premieres.*
-
-Build EcomStore using functional requirements, Spring Boot with MySQL and Flyway, and a React frontend. The lesson covers product catalog, cart, and checkout.
+Build a small full-stack e-commerce application using three detailed prompts: functional requirements, a Spring Boot backend with MySQL and Flyway, and a React frontend. The demonstration includes a product catalog, shopping cart, checkout, and application verification.
 
 ### 4. Build a Full-Stack Spring Boot + Angular App with Claude Code — eShop
 
-**YouTube tutorial: Coming soon**
+<a href="https://www.youtube.com/watch?v=E4NhUzn6Lyc" target="_blank" rel="noopener noreferrer">
+  <img src="https://img.youtube.com/vi/E4NhUzn6Lyc/hqdefault.jpg" alt="YouTube thumbnail: Spring Boot + Angular eShop tutorial">
+</a>
 
-<a href="lessons/full-stack-spring-boot-angular-app/README.md" target="_blank" rel="noopener noreferrer"><strong>Lesson Overview & Prompts</strong></a>
+[Watch on YouTube](https://www.youtube.com/watch?v=E4NhUzn6Lyc) · [Lesson Overview & Three Prompts](lessons/full-stack-spring-boot-angular-app/README.md) · [eShop Source Code](https://github.com/j2eeexpert2015/eshop)
 
-Build eShop with Java 25, Spring Boot, MySQL and Angular, following a requirements-first, three-prompt workflow.
+Build eShop with Java 25, Spring Boot, MySQL, and Angular using a requirements-first, three-prompt workflow.
 
