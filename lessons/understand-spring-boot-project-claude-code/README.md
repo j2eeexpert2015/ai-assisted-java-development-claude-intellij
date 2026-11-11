@@ -55,7 +55,8 @@ Explain its architecture, component dependencies, and data flow, including how d
 processed, validated, and stored where applicable.
 
 Highlight important design decisions and evidence-based concerns.
-Include one clear Mermaid architecture diagram.
+Include one clear Mermaid architecture diagram with valid syntax.
+Use parser-safe labels and avoid semicolons in labels or message text.
 
 Update our architecture document with source references.
 Don't invent components, layers, dependencies, or behavior.
@@ -71,7 +72,8 @@ Trace the "Add New Pet" feature end to end.
 
 Follow its entry point through the relevant components, processing, validation, data
 operations, and final outcome. Show the key classes, functions, and source references,
-with a clear Mermaid sequence or flow diagram.
+and include one clear Mermaid sequence or flow diagram with valid syntax.
+Use parser-safe labels and avoid semicolons in labels or message text.
 
 Provide a practical, step-by-step guide to build, test, run, and verify the application
 myself.
