@@ -37,10 +37,14 @@ What does the application do, what technologies does it use, and where does the 
 Explain its main features, startup process, and entry points, including how incoming
 requests or events are handled.
 
-Save the findings in docs/codebase-analysis.md with a clickable table
-of contents and source references. Keep this document updated throughout our investigation.
+Save the findings in docs/codebase-analysis.md with a clickable table of contents and
+source references. Start it with only these sections: Purpose and main features,
+Technology stack, Startup process, Entry points and request handling, Open questions.
+No placeholders for later topics. Open questions lists only what the evidence couldn't confirm.
+Keep this document updated throughout our investigation.
 
 Use verifiable project evidence; don't invent details.
+Use installed Maven (mvn) in any commands, not the Maven Wrapper (mvnw).
 Don't run the application or modify application code.
 ```
 
@@ -59,7 +63,9 @@ Include one clear, high-level Mermaid architecture diagram with valid syntax.
 Keep it to about 12 nodes. Put every node label in double quotes, and avoid
 semicolons in labels.
 
-Update docs/codebase-analysis.md with clickable source references.
+Update docs/codebase-analysis.md with clickable source references. Add only these
+sections, placed before Open questions: Architecture, Data flow, Design decisions, Concerns.
+Leave existing sections unchanged unless a finding corrects them.
 Don't invent components, layers, dependencies, or behavior.
 Don't run or modify the application.
 ```
@@ -90,7 +96,9 @@ successful and invalid workflow scenarios. Clearly identify any tests needing
 external services.
 
 Update docs/codebase-analysis.md with the feature trace and a concise execution
-and manual verification runbook. Mark all execution results as pending until verified.
+and manual verification runbook. Add only these sections, placed before Open questions:
+Feature trace, Runbook. Leave existing sections unchanged unless a finding corrects them.
+Mark all execution results as pending until verified.
 
 Use verifiable evidence; never invent results.
 Do not run commands that build, test, or start the application.
