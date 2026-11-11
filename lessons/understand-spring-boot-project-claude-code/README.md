@@ -38,9 +38,11 @@ Explain its main features, startup process, and entry points, including how inco
 requests or events are handled.
 
 Save the findings in docs/codebase-analysis.md with a clickable table of contents and
-source references. Start it with only these sections: Purpose and main features,
-Technology stack, Startup process, Entry points and request handling, Open questions.
-No placeholders for later topics. Open questions lists only what the evidence couldn't confirm.
+clickable source links to each file and line. Start it with only these sections: Purpose
+and main features, Technology stack, Startup process, Entry points and request handling,
+Open questions. Don't cover the data model, architecture, data flow, or build and run
+steps yet, and add no placeholders for them. Open questions lists only what the evidence
+couldn't confirm.
 Keep this document updated throughout our investigation.
 
 Use verifiable project evidence; don't invent details.
@@ -65,7 +67,8 @@ semicolons in labels.
 
 Update docs/codebase-analysis.md with clickable source references. Add only these
 sections, placed before Open questions: Architecture, Data flow, Design decisions, Concerns.
-Leave existing sections unchanged unless a finding corrects them.
+Don't cover a feature trace or build and run steps yet. Leave existing sections unchanged
+unless a finding corrects them, and update Open questions as needed.
 Don't invent components, layers, dependencies, or behavior.
 Don't run or modify the application.
 ```
@@ -97,7 +100,8 @@ external services.
 
 Update docs/codebase-analysis.md with the feature trace and a concise execution
 and manual verification runbook. Add only these sections, placed before Open questions:
-Feature trace, Runbook. Leave existing sections unchanged unless a finding corrects them.
+Feature trace, Runbook. Leave existing sections unchanged unless a finding corrects them,
+and update Open questions as needed.
 Mark all execution results as pending until verified.
 
 Use verifiable evidence; never invent results.
