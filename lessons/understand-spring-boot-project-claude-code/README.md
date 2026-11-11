@@ -55,10 +55,11 @@ Explain its architecture, component dependencies, and data flow, including how d
 processed, validated, and stored where applicable.
 
 Highlight important design decisions and evidence-based concerns.
-Include one clear Mermaid architecture diagram with valid syntax.
-Put every node label in double quotes, and avoid semicolons in labels.
+Include one clear, high-level Mermaid architecture diagram with valid syntax.
+Keep it to about 12 nodes. Put every node label in double quotes, and avoid
+semicolons in labels.
 
-Update our architecture document with source references.
+Update docs/codebase-analysis.md with clickable source references.
 Don't invent components, layers, dependencies, or behavior.
 Don't run or modify the application.
 ```
@@ -71,7 +72,7 @@ Don't run or modify the application.
 Trace the "Add New Pet" feature end to end.
 
 Follow its entry point through the relevant components, processing, validation, data
-operations, and final outcome. Show the key classes, functions, and source references,
+operations, and final outcome. Show the key classes, functions, and clickable source references,
 and include one clear Mermaid sequence diagram with valid syntax.
 Avoid semicolons in message text.
 
@@ -88,7 +89,7 @@ Include the complete test suite, relevant quality checks, application startup, a
 successful and invalid workflow scenarios. Clearly identify any tests needing
 external services.
 
-Update our architecture document with the feature trace and a concise execution
+Update docs/codebase-analysis.md with the feature trace and a concise execution
 and manual verification runbook. Mark all execution results as pending until verified.
 
 Use verifiable evidence; never invent results.
