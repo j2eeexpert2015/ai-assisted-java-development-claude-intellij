@@ -45,7 +45,8 @@ steps yet, and add no placeholders for them. Open questions lists only what the 
 couldn't confirm.
 Keep this document updated throughout our investigation.
 
-Use verifiable project evidence; don't invent details.
+Base findings on source code and configuration; don't invent details.
+Treat the README as claims to check, not as evidence.
 Use installed Maven (mvn) in any commands, not the Maven Wrapper (mvnw).
 Don't run the application or modify application code.
 ```
@@ -70,6 +71,7 @@ sections, placed before Open questions: Architecture, Data flow, Design decision
 Don't cover a feature trace or build and run steps yet. Leave existing sections unchanged
 unless a finding corrects them, and update Open questions as needed.
 Don't invent components, layers, dependencies, or behavior.
+Treat the README as claims to check, not as evidence.
 Don't run or modify the application.
 ```
 
@@ -104,7 +106,8 @@ Feature trace, Runbook. Leave existing sections unchanged unless a finding corre
 and update Open questions as needed.
 Mark all execution results as pending until verified.
 
-Use verifiable evidence; never invent results.
+Base findings on source code and configuration; never invent results.
+Treat the README as claims to check, not as evidence.
 Do not run commands that build, test, or start the application.
 Do not modify application code.
 ```
