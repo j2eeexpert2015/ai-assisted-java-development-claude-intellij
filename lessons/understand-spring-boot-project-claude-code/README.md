@@ -20,7 +20,7 @@ This lesson uses [Spring PetClinic](https://github.com/spring-projects/spring-pe
 ## Getting started
 
 1. Clone [Spring PetClinic](https://github.com/spring-projects/spring-petclinic) and open its root directory in IntelliJ IDEA.
-2. Open Claude Code from that project directory. For a fresh run, move aside any existing `docs/application-architecture-analysis.md`.
+2. Open Claude Code from that project directory. For a fresh run, move aside any existing `docs/codebase-analysis.md`.
 3. Submit the following three prompts **in order, in the same session**. Review the findings and updated Markdown after each prompt.
 
 The prompts do not authorize Claude to build, test, or start the application or change its source code.
@@ -37,7 +37,7 @@ What does the application do, what technologies does it use, and where does the 
 Explain its main features, startup process, and entry points, including how incoming
 requests or events are handled.
 
-Save the findings in docs/application-architecture-analysis.md with a clickable table
+Save the findings in docs/codebase-analysis.md with a clickable table
 of contents and source references. Keep this document updated throughout our investigation.
 
 Use verifiable project evidence; don't invent details.
@@ -98,7 +98,7 @@ Do not modify application code.
 
 ## Run and verify it yourself
 
-Follow the **project-specific runbook Claude generates** in `docs/application-architecture-analysis.md`. For the PetClinic version used in this lesson, a basic terminal sequence is:
+Follow the **project-specific runbook Claude generates** in `docs/codebase-analysis.md`. For the PetClinic version used in this lesson, a basic terminal sequence is:
 
 ```powershell
 java -version
@@ -116,6 +116,6 @@ The prompts mark every execution result **pending** until you carry out these ch
 
 ## Generated architecture document
 
-Claude creates and incrementally updates `docs/application-architecture-analysis.md` as the **output** of the three prompts. It should contain the overview and entry points, source-backed architecture, a Mermaid architecture diagram, an end-to-end feature trace with a sequence or flow diagram, and the manual execution runbook.
+Claude creates and incrementally updates `docs/codebase-analysis.md` as the **output** of the three prompts. It should contain the overview and entry points, source-backed architecture, a Mermaid architecture diagram, an end-to-end feature trace with a sequence or flow diagram, and the manual execution runbook.
 
 Source-based explanations and inferred framework behavior are not the same as observed runtime results. Preview diagrams before relying on them, and record actual test and browser outcomes accurately.
