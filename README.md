@@ -10,6 +10,7 @@ Browse the lessons below. Click a video thumbnail to watch the corresponding tut
 - [Claude Code with IntelliJ IDEA — First Java Project](#2-claude-code-with-intellij-idea--your-first-java-project)
 - [Spring Boot + React — EcomStore](#3-build-a-full-stack-spring-boot--react-app-with-claude-code--ecomstore)
 - [Spring Boot + Angular — eShop](#4-build-a-full-stack-spring-boot--angular-app-with-claude-code--eshop)
+- [Understand an Unfamiliar Spring Boot Project](#5-understand-an-unfamiliar-spring-boot-project-with-claude-code-in-intellij-idea)
 - [About the lesson resources](#about-the-lesson-resources)
 
 ## Video tutorials and lesson resources
@@ -53,4 +54,10 @@ Build a small full-stack e-commerce application using three detailed prompts: fu
 [Watch on YouTube](https://www.youtube.com/watch?v=E4NhUzn6Lyc) · [Lesson Overview & Three Prompts](lessons/full-stack-spring-boot-angular-app/README.md) · [eShop Source Code](https://github.com/j2eeexpert2015/eshop)
 
 Build eShop with Java 25, Spring Boot, MySQL, and Angular using a requirements-first, three-prompt workflow.
+
+### 5. Understand an Unfamiliar Spring Boot Project with Claude Code in IntelliJ IDEA
+
+Video coming soon · [Lesson Overview & Three Prompts](lessons/understand-spring-boot-project-claude-code/README.md) · [Spring PetClinic (fork used in this lesson)](https://github.com/j2eeexpert2015/spring-petclinic)
+
+Understand an existing Spring Boot application with three prompts: discover what it does and where it starts, explain its architecture, and trace the Add New Pet feature end to end. Claude documents the findings in one Markdown file with clickable source links; you build, test, run, and verify the application yourself.
 
