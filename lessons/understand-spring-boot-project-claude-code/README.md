@@ -10,107 +10,131 @@ This lesson uses [a fork of Spring PetClinic](https://github.com/j2eeexpert2015/
 
 ## Contents
 
-- [Getting started](#getting-started)
-- [Prompt 1 — Discover the application](#prompt-1--discover-the-application)
-- [Prompt 2 — Understand the architecture](#prompt-2--understand-the-architecture)
-- [Prompt 3 — Trace a real feature](#prompt-3--trace-a-real-feature)
+- [Getting Started](#getting-started)
+- [Prompt 1 — Discover the Application](#prompt-1--discover-the-application)
+- [Prompt 2 — Understand the Architecture](#prompt-2--understand-the-architecture)
+- [Prompt 3 — Trace and Verify a Real Feature](#prompt-3--trace-and-verify-a-real-feature)
 
-## Getting started
+## Getting Started
 
 1. Clone the [Spring PetClinic fork](https://github.com/j2eeexpert2015/spring-petclinic) (`https://github.com/j2eeexpert2015/spring-petclinic.git`) with Git rather than downloading a ZIP, and open its root directory in IntelliJ IDEA.
 2. Open Claude Code from that project directory. For a fresh run, move aside any existing `docs/codebase-analysis.md`.
 3. Submit the following three prompts **in order, in the same session**. Review the findings and updated Markdown after each prompt.
 
-The prompts do not authorize Claude to build, test, or start the application or change its source code.
+The three prompts progressively create one document, `docs/codebase-analysis.md`. Claude Code does **not** build, test, start, or modify the application. You execute and verify the Runbook yourself.
 
-## Prompt 1 — Discover the application
+## Prompt 1 — Discover the Application
 
 **What does this application do, and where does the code start?**
 
 ```text
-I'm new to this project.
+I'm new to this project. Investigate it using source code and configuration.
 
-What does the application do, what technologies does it use, and where does the code start?
+Purpose and Main Features — Briefly summarize what the application does.
+List only its main features with clickable source links; leave implementation
+details to the relevant technical sections.
 
-Explain its main features, startup process, and entry points, including how incoming
-requests or events are handled.
+Technology Stack — Group the main technologies by role, with versions and
+source evidence. List supporting tools separately.
 
-Save the findings in docs/codebase-analysis.md with a clickable table of contents and
-clickable source links to each file and line. Start it with only these sections: Purpose
-and main features, Technology stack, Startup process, Entry points and request handling,
-Open questions. Don't cover the data model, architecture, data flow, or build and run
-steps yet, and add no placeholders for them. Open questions lists only what the evidence
-couldn't confirm.
-Keep this document updated throughout our investigation.
+Startup Process — Explain how the application starts, including its entry
+point, configuration, and important initialization steps.
 
-Base findings on source code and configuration; don't invent details.
-Treat the README as claims to check, not as evidence.
-Use installed Maven (mvn) in any commands, not the Maven Wrapper (mvnw).
-Don't run the application or modify application code.
+Entry Points and Request Handling — Identify how incoming requests or events
+enter the application and how they are handled.
+
+Create docs/codebase-analysis.md with a clickable table of contents,
+clickable source links to relevant files and lines, and only these four sections
+in the order listed. Use Title Case for all section and subsection headings.
+Do not add placeholders for later sections.
+
+Base findings on source and configuration. Treat the README as claims to
+verify, not as evidence. Do not invent details; state uncertainty beside
+the relevant finding. Do not build, test, start, or modify the application.
 ```
 
-## Prompt 2 — Understand the architecture
+## Prompt 2 — Understand the Architecture
 
-**How do the pieces talk to each other?**
+**How do the main components interact?**
 
 ```text
-How do the main components of this application interact?
+Continue the investigation and update docs/codebase-analysis.md.
 
-Explain its architecture, component dependencies, and data flow, including how data is
-processed, validated, and stored where applicable.
+Architecture — Explain the main components, their responsibilities, and
+dependencies.
 
-Highlight important design decisions and evidence-based concerns.
-Include one clear, high-level Mermaid architecture diagram with valid syntax.
-Keep it to about 12 nodes. Put every node label in double quotes, and avoid
-semicolons in labels.
+Include one readable Mermaid architecture diagram. Show each main entry point
+separately, connected to the components it interacts with; omit framework
+internals. Label arrows briefly and distinguish direct dependencies from
+framework-managed interactions. Include only evidence-backed relationships.
 
-Update docs/codebase-analysis.md with clickable source references. Add only these
-sections, placed before Open questions: Architecture, Data flow, Design decisions, Concerns.
-Don't cover a feature trace or build and run steps yet. Leave existing sections unchanged
-unless a finding corrects them, and update Open questions as needed.
-Don't invent components, layers, dependencies, or behavior.
-Treat the README as claims to check, not as evidence.
-Don't run or modify the application.
+Under the diagram, trace one representative request in a few numbered steps.
+Put node and arrow labels in double quotes, and avoid semicolons in labels.
+
+Add only the Architecture section after the existing sections. Update the
+clickable table of contents and include clickable source links to relevant
+files and lines. Use Title Case for headings. Leave earlier sections unchanged
+unless evidence requires a correction. Do not add later sections or placeholders.
+
+Treat the README as claims to verify, not as evidence. Do not invent
+components or behavior. Do not build, test, start, or modify the application.
 ```
 
-## Prompt 3 — Trace a real feature
+## Prompt 3 — Trace and Verify a Real Feature
 
-**How does Add New Pet work end to end?** This recording specifies the feature to make the demonstration consistent. For another repository, replace the feature name on the first line.
+**How does Add New Pet work end to end?** This recording specifies the feature to keep the demonstration consistent. For another repository, replace the feature name with one that exists in that codebase.
 
 ```text
-Trace the "Add New Pet" feature end to end.
+Continue the investigation and update docs/codebase-analysis.md.
 
-Follow its entry point through the relevant components, processing, validation, data
-operations, and final outcome. Show the key classes, functions, and clickable source references,
-and include one clear Mermaid sequence diagram with valid syntax.
-Avoid semicolons in message text.
+Feature Trace — Trace the "Add New Pet" feature from initiation to final
+outcome. Explain the actual execution order, participating components,
+important decisions, and alternative outcomes supported by the code.
 
-Provide a practical, step-by-step guide to build, test, run, and verify the application
-myself.
+Present the trace as one numbered table showing each step, what happens,
+the relevant classes or functions, and clickable source links. Keep the
+main execution path clear and avoid unnecessary details.
 
-Identify prerequisites, required tools and versions, configuration, and external
-services. Include exact commands, expected outcomes, and troubleshooting guidance.
+Include one simple Mermaid flowchart after the table showing the feature's
+main steps, decisions, and outcomes. Do not include a sequence diagram.
 
-For Maven projects, use installed Maven (mvn) with standard commands, not the Maven
-Wrapper (mvnw) or batch mode (-B). Adapt to other build tools when applicable.
+Runbook — Provide one dependency-ordered guide covering environment checks,
+required services, complete build and tests, result verification, application
+startup, and manual feature verification.
 
-Include the complete test suite, relevant quality checks, application startup, and
-successful and invalid workflow scenarios. Clearly identify any tests needing
-external services, and add a step to start each service and confirm it is
-running before the first command that needs it.
+Inspect build and test configuration to identify prerequisites, tools and
+versions, profiles, quality checks, test categories, and external dependencies.
+Provide exact commands, expected outcomes, troubleshooting, and corrective
+rerun steps. Distinguish required steps from optional alternatives and avoid
+redundant commands.
 
-Update docs/codebase-analysis.md with the feature trace and a concise execution
-and manual verification runbook. Add only these sections, placed before Open questions:
-Feature trace, Runbook. Leave existing sections unchanged unless a finding corrects them,
-and update Open questions as needed.
-Mark all execution results as pending until verified.
+Determine whether services such as Docker must be started manually or are
+managed by tests. Include readiness checks before dependent steps.
 
-Base findings on source code and configuration; never invent results.
-Treat the README as claims to check, not as evidence.
-Do not run commands that build, test, or start the application.
-Do not modify application code.
+Explain how to verify that all applicable tests executed, including integration
+tests. Identify failures, errors, and unexpected skips. Treat predicted test
+counts as estimates until confirmed by actual execution.
+
+Include a browser-based walkthrough covering successful and invalid scenarios.
+Keep relevant test coverage in the Runbook rather than the Feature Trace.
+
+For Maven projects, use installed Maven (mvn), not the Maven Wrapper (mvnw)
+or batch mode (-B). Adapt to other build tools where applicable.
+
+Add only Feature Trace and Runbook, in that order, after Architecture. Update
+the clickable table of contents and include clickable source links to relevant
+files and lines. Use Title Case for all headings. Leave previous sections
+unchanged unless evidence requires a correction.
+
+Do not add separate Data Flow, Design Decisions, Concerns, or Open Questions
+sections. Keep the document concise and avoid repetition. Treat the README
+as claims to verify, not as evidence. Do not invent behavior or results;
+state uncertainty beside relevant findings. Mark all execution results PENDING.
+
+Do not build, test, start, or modify the application. I will perform all
+execution and manual verification myself.
 ```
 
+The final document contains seven sections, in order: **Purpose and Main Features**, **Technology Stack**, **Startup Process**, **Entry Points and Request Handling**, **Architecture**, **Feature Trace**, and **Runbook**.
 
-
-Source-based explanations and inferred framework behavior are not the same as observed runtime results. Preview diagrams before relying on them, and record actual test and browser outcomes accurately.
+The architecture diagram shows component relationships; the feature flowchart summarizes the selected feature's main steps and outcomes. The Runbook explains how to verify the findings manually. Preview both diagrams, check that source links resolve, and record real test and browser results accurately. **Source-based expectations are not observed runtime results.**
