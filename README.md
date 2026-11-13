@@ -10,7 +10,7 @@ Browse the lessons below. Click a video thumbnail to watch the corresponding tut
 - [Claude Code with IntelliJ IDEA — First Java Project](#2-claude-code-with-intellij-idea--your-first-java-project)
 - [Spring Boot + React — EcomStore](#3-build-a-full-stack-spring-boot--react-app-with-claude-code--ecomstore)
 - [Spring Boot + Angular — eShop](#4-build-a-full-stack-spring-boot--angular-app-with-claude-code--eshop)
-- [Understand an Unfamiliar Spring Boot Project](#5-understand-an-unfamiliar-spring-boot-project-with-claude-code-in-intellij-idea)
+- [Understand an Unfamiliar Spring Boot Project with Claude Code](#5-understand-an-unfamiliar-spring-boot-project-with-claude-code-in-intellij-idea)
 
 ## Video tutorials and lesson resources
 
