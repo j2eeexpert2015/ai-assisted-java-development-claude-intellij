@@ -102,18 +102,20 @@ Runbook — Provide one dependency-ordered guide covering environment checks,
 required services, complete build and tests, result verification, application
 startup, and manual feature verification.
 
-Inspect build and test configuration to identify prerequisites, tools and
-versions, profiles, quality checks, test categories, and external dependencies.
-Provide exact commands, expected outcomes, troubleshooting, and corrective
-rerun steps. Distinguish required steps from optional alternatives and avoid
-redundant commands.
+Inspect the project's build and test configuration to identify all
+prerequisites for building, testing, and running the application. Explain
+which are required, when to start them, and whether services must be started
+manually or are managed automatically.
 
-Determine whether services such as Docker must be started manually or are
-managed by tests. Include readiness checks before dependent steps.
+Provide the build, test, and run commands in execution order, including
+quality checks, profiles, and any required services. Cover the complete test
+suite, including integration tests, and explain how to verify failures,
+errors, skipped or unexecuted tests, and successful execution. Treat
+predicted test counts as estimates until confirmed by actual execution.
 
-Explain how to verify that all applicable tests executed, including integration
-tests. Identify failures, errors, and unexpected skips. Treat predicted test
-counts as estimates until confirmed by actual execution.
+Provide expected outcomes, troubleshooting, and corrective rerun steps.
+Distinguish required steps from optional alternatives and avoid redundant
+commands. Include readiness checks before dependent steps.
 
 Include a browser-based walkthrough covering successful and invalid scenarios.
 Keep relevant test coverage in the Runbook rather than the Feature Trace.
@@ -129,7 +131,7 @@ unchanged unless evidence requires a correction.
 Do not add separate Data Flow, Design Decisions, Concerns, or Open Questions
 sections. Keep the document concise and avoid repetition. Treat the README
 as claims to verify, not as evidence. Do not invent behavior or results;
-state uncertainty beside relevant findings. Mark all execution results PENDING.
+state uncertainty beside relevant findings. Mark unverified execution results PENDING.
 
 Do not build, test, start, or modify the application. I will perform all
 execution and manual verification myself.
